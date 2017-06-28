@@ -1,0 +1,3 @@
+class DrillsController < ApplicationController
+
+end
