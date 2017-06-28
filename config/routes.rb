@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   # main admin page to show all games and practice sessions for review
   get '/admin', to: 'users#admin'
 
+  # practice sessions main page will join player tendencies
+  get '/tendencies', to: 'practice_sessions#tendencies'
+  get '/tendencies/new', to: 'practice_sessions#new'
+
 end
