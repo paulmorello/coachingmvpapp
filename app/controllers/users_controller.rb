@@ -24,4 +24,7 @@ class UsersController < ApplicationController
   def update
   end
 
+  def admin
+  end
+
 end

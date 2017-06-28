@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   # landing page and dashboard routes
   get '/', to: 'users#home'
   get '/dashboard', to: 'users#dashboard'
+
+  # main admin page to show all games and practice sessions for review
+  get '/admin', to: 'users#admin'
+
 end
