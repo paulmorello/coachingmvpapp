@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   resources :drills, :users, :games, :stats, :practice_sessions
 
+  # session routes
   get '/login', to: 'session#new'
   post '/session', to: 'session#create'
   delete '/logout', to: 'session#destroy'
 
+  # landing page and dashboard routes
+  get '/', to: 'users#home'
+  get '/dashboard', to: 'users#dashboard'
 end
