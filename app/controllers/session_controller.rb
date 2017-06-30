@@ -7,7 +7,7 @@ class SessionController < ApplicationController
   def create
 
     @user = User.find_by(email: params[:email])
-    user_authenticate('events')
+    user_authenticate('dashboard')
 
   end
 

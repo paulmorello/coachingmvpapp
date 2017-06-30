@@ -14,12 +14,15 @@
   </head>
 
   <body>
-      <% if !current_page?('/') %>
-        <%= render 'partials/navigation/navbar' %>
-      <% end %>
+    <!-- Checking if the current page is the landing page because a different
+     navbar will show -->
+    <% if !current_page?('/') %>
+      <%= render 'partials/navigation/navbar' %>
+    <% end %>
 
-    <div class="ui grid">
-      <% if !current_page?('/') %>
+    <!-- Only show the vertical menu on the following pages -->
+    <% if current_page?('/dashboard') || current_page?('/stats') || current_page?('/games') || current_page?('/tendencies') || current_page?('/drills')%>
+      <div class="ui grid">
         <%= render 'partials/navigation/vertical_nav' %>
       <% end %>
 

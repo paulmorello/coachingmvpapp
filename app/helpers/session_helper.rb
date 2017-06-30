@@ -19,7 +19,7 @@ module SessionHelper
       session[:user_id] = @user.id
       redirect_to "/#{route}"
     else
-      render :new
+      redirect_to "/login"
     end
 
   end

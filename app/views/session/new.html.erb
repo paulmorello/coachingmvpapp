@@ -1,1 +1,25 @@
-<h2>User login page</h2>
+<div>
+
+  <h2>User login page</h2>
+
+  <%= form_tag '/session', class: 'ui form', method: 'post' do%>
+
+    <div class="field">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Enter your email address">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Enter Password">
+    </div>
+    <div class="field">
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden">
+        <label>I agree to the Terms and Conditions</label>
+      </div>
+    </div>
+    <button class="ui button green" type="submit">Submit</button>
+
+  <% end %>
+
+</div>
