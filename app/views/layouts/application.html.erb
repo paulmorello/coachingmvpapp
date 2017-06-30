@@ -4,11 +4,30 @@
     <title>Sportsmvp</title>
     <%= csrf_meta_tags %>
 
+    <!-- Semantic UI css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"</script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+      <% if !current_page?('/') %>
+        <%= render 'partials/navigation/navbar' %>
+      <% end %>
+
+    <div class="ui grid">
+      <% if !current_page?('/') %>
+        <%= render 'partials/navigation/vertical_nav' %>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+
+    <!-- Semantic UI JavaScript CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
   </body>
 </html>

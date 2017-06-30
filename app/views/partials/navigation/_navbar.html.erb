@@ -1,0 +1,48 @@
+<header>
+  <nav>
+    <div class="ui large menu">
+      <div class="left menu">
+        <div class="item">[LOGO Here]</div>
+        <div class="item">
+
+          <div class="ui floating dropdown icon">
+            <i class="announcement icon"></i>
+            <div class="menu">
+              <div class="item"><i class="edit icon"></i>Notification 1</div>
+              <div class="item"><i class="delete icon"></i>Notification 2</div>
+              <div class="item"><i class="hide icon"></i> Notification 3</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="ui fluid category search item">
+          <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Search your profile...">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+
+      <div class="right menu">
+        <a class="item">Dashboard</a>
+        <a class="item">Video Upload</a>
+        <div class="ui dropdown item">
+          [Username Here] <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item">[Name Here]</a>
+            <a class="item">Account Details</a>
+            <a class="ui button blue">Sign Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // initialising the semantic ui dropdown menu
+  $(document).ready(function() {
+      $('.ui.dropdown').dropdown();
+  });
+</script>
