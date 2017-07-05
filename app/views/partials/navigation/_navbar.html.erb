@@ -27,12 +27,12 @@
 
       <div class="right menu">
         <a class="item" href="/dashboard">Dashboard</a>
-        <a class="item" href="/games/new">Video Upload</a>
+        <a class="item" href="/videos/new">Video Upload</a>
         <div class="ui dropdown item">
-          [Username Here] <i class="dropdown icon"></i>
+          <%= current_user.username %> <i class="dropdown icon"></i>
           <div class="menu">
-            <a class="item">[Name Here]</a>
-            <a class="item">Account Details</a>
+            <a class="item">Hi <%= current_user.first_name %></a>
+            <a class="item" href="/users/<%= current_user.username %>">Account Details</a>
             <a class="ui button blue">Sign Out</a>
           </div>
         </div>

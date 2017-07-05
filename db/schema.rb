@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628031031) do
+ActiveRecord::Schema.define(version: 20170705033818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,17 @@ ActiveRecord::Schema.define(version: 20170628031031) do
     t.boolean "admin"
     t.text "subscription"
     t.integer "practice_session_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "team_name"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.text "title"
+    t.date "game_date"
+    t.text "video_url"
+    t.integer "practice_session_id"
+    t.integer "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

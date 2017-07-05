@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :drills, :users, :games, :stats, :practice_sessions
+  resources :drills, :games, :stats, :practice_sessions, :videos
+  resources :users, param: :username
 
   # session routes
   get '/login', to: 'session#new'
