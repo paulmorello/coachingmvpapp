@@ -12,7 +12,7 @@ class VideosController < ApplicationController
     video.game_date = params[:game_date]
 
     # check if user uploads video from local storage or youtube
-    if params[:video_file]
+    if params[:video_file] != ""
       video.video_url = params[:video_file]
     else
       video.video_url = params[:video_url]
@@ -26,7 +26,7 @@ class VideosController < ApplicationController
       practice_session.user_id = current_user.id
       practice_session.date = params[:game_date]
 
-      if params[:video_file]
+      if params[:video_file] != ""
         practice_session.practice_session_url = params[:video_file]
       else
         practice_session.practice_session_url = params[:video_url]
@@ -46,7 +46,7 @@ class VideosController < ApplicationController
       game.title = params[:title]
       game.date = params[:game_date]
 
-      if params[:video_file]
+      if params[:video_file] != ""
         game.game_url = params[:video_file]
       else
         game.game_url = params[:video_url]
@@ -65,8 +65,6 @@ class VideosController < ApplicationController
         redirect_to 'videos/new'
       end
     end
-
-    raise
 
     @errors = {}
     # check to make sure a practice sesion is chosen
