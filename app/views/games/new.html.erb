@@ -1,1 +1,58 @@
-<h2>Create a new game review, this will be dedicated to admins at first</h2>
+<div>
+
+  <h2>Game Footage Upload Form</h2>
+
+  <%= form_tag '/games', class: 'ui form', method: 'post' do%>
+
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="game_title" placeholder="Enter a video title">
+    </div>
+
+    <div class="field">
+      <label>Date of Game</label>
+      <input type="date" name="game_date" placeholder="Enter the game date">
+    </div>
+
+    <div class="field">
+      <label>Team Name</label>
+      <input type="text" name="team_name" placeholder="Enter your team name">
+    </div>
+    <div class="field">
+      <label>Opponent Name</label>
+      <input type="text" name="opponent_name" placeholder="Enter your opponents name">
+    </div>
+    <div class="field">
+      <label>Team Score</label>
+      <input type="number" name="team_score" placeholder="Enter your team score">
+    </div>
+    <div class="field">
+      <label>Opponent Score</label>
+      <input type="number" name="opponent_score" placeholder="Enter your opponents score">
+    </div>
+    <div class="field">
+      <label>Your Player Number</label>
+      <input type="number" name="player_number" placeholder="Enter your game number">
+    </div>
+
+    <div class="field">
+      <label>Video Upload</label>
+      <input type="file" name="video_file" placeholder="Browse">
+    </div>
+
+    <h3>OR</h3>
+
+    <div class="field">
+      <label>Youtube Video Upload</label>
+      <input type="text" name="video_url" placeholder="Enter youtube video link">
+    </div>
+
+    <button class="ui button green" type="submit">Submit</button>
+
+  <% end %>
+
+</div>
+
+<div>
+  <%= @errors %>
+</div>

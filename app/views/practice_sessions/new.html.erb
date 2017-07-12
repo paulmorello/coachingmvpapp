@@ -1,1 +1,37 @@
-<h2>This page is to add a new coaching review for a user, this will be dedicated to admins</h2>
+<div>
+
+  <h2>Practice Session Upload Form</h2>
+
+  <%= form_tag '/practice_sessions', class: 'ui form', method: 'post' do%>
+
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="practice_title" placeholder="Enter a video title">
+    </div>
+
+    <div class="field">
+      <label>Date of Session</label>
+      <input type="date" name="game_date" placeholder="Enter the game date">
+    </div>
+
+    <div class="field">
+      <label>Video Upload</label>
+      <input type="file" name="video_file" placeholder="Browse">
+    </div>
+
+    <h3>OR</h3>
+
+    <div class="field">
+      <label>Youtube Video Upload</label>
+      <input type="text" name="video_url" placeholder="Enter youtube video link">
+    </div>
+
+    <button class="ui button green" type="submit">Submit</button>
+
+  <% end %>
+
+</div>
+
+<div>
+  <%= @errors %>
+</div>
