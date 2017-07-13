@@ -1,17 +1,17 @@
 class User < ApplicationRecord
   has_secure_password
-  
-  has_many :games
-  has_many :practice_sessions
-  has_many :videos
-  has_many :stats
+
+  has_many :games, dependent: :destroy
+  has_many :practice_sessions, dependent: :destroy
+  has_many :videos, dependent: :destroy
+  has_many :stats, dependent: :destroy
 
   # Validation constraints
   validates :email, :username, presence: true
   validates :email, uniqueness: true
 
   validates :username, uniqueness: true, length: {
-    in: 4..60,
+    in: 4..40,
     },
     format: {
       without: /[^a-z0-9]/i,
