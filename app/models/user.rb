@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  
   has_many :games
   has_many :practice_sessions
   has_many :videos

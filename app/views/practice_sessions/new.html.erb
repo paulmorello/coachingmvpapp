@@ -2,7 +2,17 @@
 
   <h2>Practice Session Upload Form</h2>
 
-  <%= form_tag '/practice_sessions', class: 'ui form', method: 'post' do%>
+  <%= form_tag '/practice_sessions', class: 'ui form error', method: 'post' do%>
+
+    <!-- display form errors -->
+    <% if @practice.errors.any? %>
+      <div class="ui error message">
+        <div class="header">Form Errors</div>
+          <% @practice.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+      </div>
+    <% end %>
 
     <div class="field">
       <label>Title</label>

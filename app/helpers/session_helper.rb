@@ -19,7 +19,9 @@ module SessionHelper
       session[:user_id] = @user.id
       redirect_to "/#{route}"
     else
-      redirect_to "/login"
+      @error = 'Login or Password is incorrect'
+
+      render :new
     end
 
   end

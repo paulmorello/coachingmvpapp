@@ -4,7 +4,17 @@
   <!-- Insert Details of Billing Cycle here -->
     <h3>1. Your Billing Cycle</h3>
 
-  <%= form_tag '/users', class: 'ui form', method: 'post' do%>
+  <%= form_tag '/users', class: 'ui form error', method: 'post' do%>
+
+    <!-- display form errors -->
+    <% if @user.errors.any? %>
+      <div class="ui error message">
+        <div class="header">Form Errors</div>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+      </div>
+    <% end %>
 
     <h3>2. Basic Information</h3>
     <div class="fields">

@@ -4,6 +4,14 @@
 
   <%= form_tag '/session', class: 'ui form', method: 'post' do%>
 
+    <!-- display form errors -->
+    <% if @error %>
+      <div class="ui error message">
+        <div class="header">Form Errors</div>
+          <%= @error[0] %>
+      </div>
+    <% end %>
+
     <div class="field">
       <label>Email</label>
       <input type="email" name="email" placeholder="Enter your email address">

@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   end
 
   def new
-
+    # new user instance for errors
+    @user = User.new
   end
 
   def create

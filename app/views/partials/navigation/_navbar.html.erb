@@ -2,9 +2,11 @@
   <nav>
     <div class="ui large menu">
       <div class="left menu">
-        <div class="item">[LOGO Here]</div>
-        <div class="item">
+        <div class="item"><a href="/dashboard">[LOGO Here]</a></div>
 
+        <!-- Menu for logged in users -->
+        <% if logged_in? %>
+        <div class="item">
           <!-- Notifications dropdown menu -->
           <div class="ui floating dropdown icon">
             <i class="announcement icon"></i>
@@ -14,8 +16,8 @@
               <div class="item"><i class="alarm icon"></i> Notification 3</div>
             </div>
           </div>
-
         </div>
+
         <div class="ui fluid category search item">
           <div class="ui icon input">
             <input class="prompt" type="text" placeholder="Search your profile...">
@@ -23,19 +25,28 @@
           </div>
           <div class="results"></div>
         </div>
+        <% end %>
       </div>
 
       <div class="right menu">
-        <a class="item" href="/practice_sessions/new">Upload Practice Session</a>
-        <a class="item" href="/games/new">Upload Game Footage</a>
-        <div class="ui dropdown item">
-          <%= current_user.username %> <i class="dropdown icon"></i>
-          <div class="menu">
-            <a class="item">Hi <%= current_user.first_name %></a>
-            <a class="item" href="/users/<%= current_user.username %>">Account Details</a>
-            <a class="ui button blue">Sign Out</a>
+        <!-- Menu for logged in users -->
+        <% if logged_in? %>
+          <a class="item" href="/practice_sessions/new">Upload Practice Session</a>
+          <a class="item" href="/games/new">Upload Game Footage</a>
+          <div class="ui dropdown item">
+            <%= current_user.username %> <i class="dropdown icon"></i>
+            <div class="menu">
+              <a class="item">Hi <%= current_user.first_name %></a>
+              <a class="item" href="/users/<%= current_user.username %>">Account Details</a>
+              <%= form_tag("/logout", method: "delete") do %>
+                <button class="ui button blue">Sign Out</button>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% else %>
+          <a href="/users/new" class="item">Sign Up</a>
+          <a href="/login" class="item">Login</a>
+        <% end %>
       </div>
     </div>
   </nav>
