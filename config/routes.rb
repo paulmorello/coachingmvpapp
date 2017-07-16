@@ -19,5 +19,9 @@ Rails.application.routes.draw do
   # practice sessions main page will join player tendencies
   get '/tendencies', to: 'practice_sessions#tendencies'
   get '/tendencies/new', to: 'practice_sessions#new'
+  get '/practice/confirmation', to: 'practice_sessions#confirmation'
+
+  # game confirmation page
+  get '/game/confirmation', to: 'games#confirmation'
 
 end

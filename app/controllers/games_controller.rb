@@ -3,6 +3,9 @@ class GamesController < ApplicationController
   def index
   end
 
+  def confirmation
+  end
+
   def show
   end
 
@@ -32,7 +35,7 @@ class GamesController < ApplicationController
     end
 
     if @game.save
-      redirect_to '/dashboard'
+      redirect_to '/game/confirmation'
     else
       render :new
     end

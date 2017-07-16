@@ -3,6 +3,9 @@ class PracticeSessionsController < ApplicationController
   def tendencies
   end
 
+  def confirmation
+  end
+
   def index
     redirect_to '/tendencies'
   end
@@ -28,7 +31,7 @@ class PracticeSessionsController < ApplicationController
     end
 
     if @practice.save
-      redirect_to '/dashboard'
+      redirect_to '/practice/confirmation'
     else
       render :new
     end
