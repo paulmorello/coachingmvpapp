@@ -9,6 +9,7 @@ module SessionHelper
   end
 
   def end_session
+    cookies.delete :user_id
     session[:user_id] = nil
     redirect_to '/'
   end
@@ -20,7 +21,7 @@ module SessionHelper
       redirect_to "/#{route}"
     else
       @error = 'Your Email or Password is not correct'
-      
+
       render :new
     end
 

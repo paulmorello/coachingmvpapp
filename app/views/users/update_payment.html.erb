@@ -1,0 +1,45 @@
+<div class="ui grid">
+  <div class="eleven wide column">
+
+    <h2 class="ui header">Edit Payment Information</h2>
+    <p>You current card is ending with 7474</p>
+
+    <%= form_tag user_path, class: 'ui form success errors', method: 'post' do %>
+
+        <div class="field">
+          <div class="seven wide field">
+            <label>Card Number</label>
+            <input type="text" name="card[number]" maxlength="16" placeholder="Card #">
+          </div>
+        </div>
+
+        <div class="fields">
+          <div class="three wide field">
+            <label>CVC</label>
+            <input type="text" name="card[cvc]" maxlength="3" placeholder="CVC">
+          </div>
+          <div class="six wide field">
+            <label>Expiration</label>
+            <div class="two fields">
+
+              <!-- Rendering month dropdown list -->
+              <%= render 'partials/forms/form_months' %>
+
+              <div class="field">
+                <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="ui button green">Save Changes</button>
+
+      <% end %>
+    </div>
+
+    <div class="four wide column">
+      <div class="ui vertical pointing menu">
+        <a class="item" href="/users/<%= current_user.username %>">Profile Info</a>
+      </div>
+    </div>
+
+</div>

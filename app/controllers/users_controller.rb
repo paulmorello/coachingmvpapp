@@ -40,9 +40,30 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
+
   end
 
   def update
+    @user = current_user
+    @user.first_name = params[:first_name]
+    @user.last_name = params[:last_name]
+    @user.username = params[:username_new]
+    @user.email = params[:email]
+
+    # Check if username field is empty
+    if params[:password] != ''
+      @user.password = params[:password]
+    end
+
+    if @user.save
+      @success = "You have successfully updated your account."
+      return redirect_to user_path
+    end
+    render :edit
+  end
+
+  def update_payment
   end
 
   def admin

@@ -1,5 +1,6 @@
 
 <div class="ui grid">
+
   <div class="eleven wide column">
 
     <!-- User details info block -->
@@ -23,12 +24,12 @@
 
   <div class="four wide column">
     <div class="ui vertical pointing menu">
-      <a class="item" href="#">Profile Info</a>
+      <a class="item" href="/users/<%= current_user.username %>">Profile Info</a>
     </div>
   </div>
 
 </div>
 <!-- General Information block here with info about account -->
 <div>
-  <p>You can <a href="#">UPDATE YOUR PAYMENT INFORMATION</a> here or you may <a href="#">CANCEL YOUR ACCOUNT</a>. For more information about your account you can <a href="#">CONTACT SUPPORT</a>.</p>
+  <p>You can <a href="/users/<%= current_user.username %>/update-payment">UPDATE YOUR PAYMENT INFORMATION</a> here or you may <a href="#">CANCEL YOUR ACCOUNT</a>. For more information about your account you can <a href="#">CONTACT SUPPORT</a>.</p>
 </div>
