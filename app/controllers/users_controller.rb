@@ -69,4 +69,19 @@ class UsersController < ApplicationController
   def admin
   end
 
+  def cancel_account
+  end
+
+  def destroy
+
+    user = current_user
+
+    if user && user.authenticate(params[:password])
+      user.delete
+      redirect_to "/confirmation/delete-account"
+    else
+      redirect_to "/users/#{current_user.username}"
+    end
+  end
+
 end

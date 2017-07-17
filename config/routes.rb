@@ -12,10 +12,13 @@ Rails.application.routes.draw do
   # landing page and dashboard routes
   get '/', to: 'users#home'
   get '/dashboard', to: 'users#dashboard'
-  get '/users/:username/update-payment', to: 'users#update_payment'
 
   # main admin page to show all games and practice sessions for review
   get '/admin', to: 'users#admin'
+
+  # Update payment information and cancel account routes
+  get '/users/:username/update-payment', to: 'users#update_payment'
+  get '/users/:username/cancel-account', to: 'users#cancel_account'
 
   # practice sessions main page will join player tendencies
   get '/tendencies', to: 'practice_sessions#tendencies'

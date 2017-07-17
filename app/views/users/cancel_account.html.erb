@@ -1,0 +1,26 @@
+<div class="ui grid">
+
+  <div class="eleven wide column">
+
+    <!-- User details info block -->
+    <div>
+      <h2 class="ui header">We'd hate to see you go!</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt sint fugiat placeat eaque, facere tempore blanditiis, ut quidem veniam officiis voluptates adipisci aliquid nemo impedit! Esse provident distinctio recusandae corporis.</p>
+    </div>
+
+    <!-- <%= form_tag("/destroy", method: "delete") do %>
+      <button id="delete-btn" class="ui button red">Delete</button>
+    <% end %> -->
+
+    <button id="delete-btn" class="ui button red">Delete</button>
+
+
+  </div>
+
+  <div class="four wide column">
+    <div class="ui vertical pointing menu">
+      <a class="item" href="/users/<%= current_user.username %>">Profile Info</a>
+    </div>
+  </div>
+
+</div>
