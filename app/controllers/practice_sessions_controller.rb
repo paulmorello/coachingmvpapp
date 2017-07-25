@@ -1,16 +1,24 @@
 class PracticeSessionsController < ApplicationController
 
   def tendencies
+    redirect_to_route_if_not_logged_in(route = '/login')
+
   end
 
   def confirmation
+    redirect_to_route_if_not_logged_in(route = '/login')
+
   end
 
   def index
+    redirect_to_route_if_not_logged_in(route = '/login')
     redirect_to '/tendencies'
+
   end
 
   def new
+    redirect_to_route_if_not_logged_in(route = '/login')
+
     # creating instance of practice session for errors
     @practice = PracticeSession.new
   end
@@ -39,6 +47,7 @@ class PracticeSessionsController < ApplicationController
   end
 
   def show
+    redirect_to_route_if_not_logged_in(route = '/login')
   end
 
 end

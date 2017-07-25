@@ -9,7 +9,7 @@ $(document).ready(function() {
     deleteBtn.addEventListener('click', function(event) {
       $('.tiny.modal').modal('show');
     });
-    
+
   };
 
 });

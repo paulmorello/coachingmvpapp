@@ -12,4 +12,11 @@ module RouteHelper
     end
   end
 
+  def is_not_admin?(route = '')
+    @user = current_user
+    if !@user.admin
+      redirect_to "/#{route}"
+    end
+  end
+
 end

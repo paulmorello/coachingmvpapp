@@ -2,6 +2,7 @@ class SessionController < ApplicationController
 
 
   def new
+    redirect_to_route_if_logged_in(route = '/dashboard')
 
   end
 

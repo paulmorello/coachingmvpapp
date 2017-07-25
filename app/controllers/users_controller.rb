@@ -5,10 +5,13 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    redirect_to_route_if_not_logged_in(route = '/login')
 
   end
 
   def new
+    redirect_to_route_if_logged_in(route = '/dashboard')
+
     # new user instance for errors
     @user = User.new
   end
@@ -37,14 +40,19 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to_route_if_not_logged_in(route = '/login')
+
   end
 
   def edit
+    redirect_to_route_if_not_logged_in(route = '/login')
+
     @user = current_user
 
   end
 
   def update
+
     @user = current_user
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
@@ -64,15 +72,22 @@ class UsersController < ApplicationController
   end
 
   def update_payment
+    redirect_to_route_if_not_logged_in(route = '/login')
+
   end
 
   def admin
+    redirect_to_route_if_not_logged_in(route = '/login')
+    is_not_admin?(route = '/dashboard')
+
   end
 
   def cancel_account
+    redirect_to_route_if_not_logged_in(route = '/login')
   end
 
   def delete_account
+    redirect_to_route_if_not_logged_in(route = '/login')
   end
 
   def destroy
