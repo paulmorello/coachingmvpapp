@@ -1,3 +1,5 @@
+
+
 <div class="ui grid">
 
   <div class="eleven wide column">
@@ -8,12 +10,10 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt sint fugiat placeat eaque, facere tempore blanditiis, ut quidem veniam officiis voluptates adipisci aliquid nemo impedit! Esse provident distinctio recusandae corporis.</p>
     </div>
 
-    <!-- <%= form_tag("/destroy", method: "delete") do %>
-      <button id="delete-btn" class="ui button red">Delete</button>
-    <% end %> -->
-
     <button id="delete-btn" class="ui button red">Delete</button>
 
+    <!-- Popup delete your account modal -->
+    <%= render 'partials/modals/delete_account_modal' %>
 
   </div>
 
@@ -22,5 +22,6 @@
       <a class="item" href="/users/<%= current_user.username %>">Profile Info</a>
     </div>
   </div>
+
 
 </div>

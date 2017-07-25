@@ -1,0 +1,14 @@
+<!-- Popup delete your account modal -->
+<div class="ui tiny modal">
+  <div class="header">Delete Your Account</div>
+  <div class="content">
+    <p>Are you sure you would like to delete your account?</p>
+    <p>Your statistics and information will be lost.</p>
+  </div>
+  <div class="actions">
+    <%= form_tag user_path, method: "delete" do %>
+      <button class="ui approve button red">DELETE</button>
+    <% end %>
+    <button class="ui cancel button green">Cancel</button>
+  </div>
+</div>
