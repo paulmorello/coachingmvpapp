@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # Update payment information and cancel account routes
   get '/users/:username/update-payment', to: 'users#update_payment'
   get '/users/:username/cancel-account', to: 'users#cancel_account'
+  get '/confirmation/delete-account', to: 'users#delete_account'
 
   # practice sessions main page will join player tendencies
   get '/tendencies', to: 'practice_sessions#tendencies'

@@ -72,15 +72,20 @@ class UsersController < ApplicationController
   def cancel_account
   end
 
+  def delete_account
+  end
+
   def destroy
 
     user = current_user
 
     if user && user.username == params[:username]
       user.delete
-      redirect_to "/confirmation/delete-account"
+      sleep 3
+        redirect_to "/confirmation/delete-account"
     else
-      redirect_to "/users/#{current_user.username}"
+      sleep 3
+        redirect_to "/users/#{current_user.username}"
     end
   end
 
