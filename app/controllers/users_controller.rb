@@ -111,16 +111,20 @@ class UsersController < ApplicationController
     @game_total = @games.count
 
     @practice = PracticeSession.where(needs_review: true).limit(10)
-    @practice_total = @practice.count  
+    @practice_total = @practice.count
   end
 
   def game_reviews
+    redirect_to_route_if_not_logged_in(route = 'login')
+    # is_not_admin?(route = 'dashboard')
 
     offset = 0
     @games = Game.where(needs_review: true).limit(25).offset(offset)
   end
 
   def practice_reviews
+    redirect_to_route_if_not_logged_in(route = 'login')
+    # is_not_admin?(route = 'dashboard')
 
     offset = 0
     @practice = PracticeSession.where(needs_review: true).limit(25)

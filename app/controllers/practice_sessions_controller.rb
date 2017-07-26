@@ -48,6 +48,8 @@ class PracticeSessionsController < ApplicationController
 
   def show
     redirect_to_route_if_not_logged_in(route = 'login')
+    # is_not_admin?(route = 'dashboard')
+    
   end
 
 end

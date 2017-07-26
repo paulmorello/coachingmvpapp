@@ -28,8 +28,10 @@ Rails.application.routes.draw do
   get '/tendencies', to: 'practice_sessions#tendencies'
   get '/tendencies/new', to: 'practice_sessions#new'
   get '/practice/confirmation', to: 'practice_sessions#confirmation'
+  get '/admin/practice/:id/show', to: 'practice_sessions#show'
 
-  # game confirmation page
+  # game confirmation page and show pages
   get '/game/confirmation', to: 'games#confirmation'
+  get '/admin/game/:id/show', to: 'games#show'
 
 end
