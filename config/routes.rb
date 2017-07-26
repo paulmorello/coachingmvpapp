@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   # main admin page to show all games and practice sessions for review
   get '/admin', to: 'users#admin'
+  get '/admin/game-reviews', to: 'users#game_reviews'
+  get '/admin/practice-reviews', to: 'users#practice_reviews'
 
   # Update payment information and cancel account routes
   get '/users/:username/update-payment', to: 'users#update_payment'

@@ -1,1 +1,30 @@
-<h2>Admin page that will show all games and practice sessions for review</h2>
+<div class="twelve wide column">
+  <section>
+    <h2 class="ui header">Admin dashboard</h2>
+
+    <%= form_tag '', class: 'ui form', method: 'get' do %>
+      <div class="field">
+        <label>Search for User by Email</label>
+        <input type="text" name="user_search" placeholder="Enter a users email address">
+      </div>
+    <% end %>
+  </section>
+
+  <section>
+    <h3>Games for Review</h3> <a href="/admin/game-reviews">See all games for review</a>
+    <p>Total games currently needing review: <%= @game_total %></p>
+
+    <!-- Games for review, partial in loops -->
+    <%= render 'partials/loops/game_admin_table' %>
+
+  </section>
+
+  <section>
+    <h3>Practice Sessions for Review</h3> <a href="/admin/practice-reviews">See all practice sessions for review</a>
+    <p>Total practice sessions currently needing review: <%= @practice_total  %></p>
+
+    <!-- Practice sessions for review, partial in loops -->
+    <%= render 'partials/loops/practice_admin_table' %>
+
+  </section>
+</div>

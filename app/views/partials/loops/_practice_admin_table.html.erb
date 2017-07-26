@@ -1,0 +1,24 @@
+<!-- Practice sessions that need to be reviewed -->
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Date Uploaded</th>
+      <th></th>
+    </tr>
+    <tbody>
+      <% @practice.each do |psession| %>
+      <% user = User.find_by(id: psession.user_id) %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.first_name %> <%= user.last_name %></td>
+          <td><%= user.username %></td>
+          <td><%= psession.created_at %></td>
+          <td><a href="#" type="button" class="ui button green">Review</a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </thead>
+</table>

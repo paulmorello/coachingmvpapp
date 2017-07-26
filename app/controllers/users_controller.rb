@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      
+
       sleep 3
         redirect_to '/confirmation/payment-confirmed'
     else
@@ -78,12 +78,6 @@ class UsersController < ApplicationController
 
   end
 
-  def admin
-    redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = 'dashboard')
-
-  end
-
   def confirm_payment
   end
 
@@ -106,6 +100,30 @@ class UsersController < ApplicationController
       sleep 3
         redirect_to "/users/#{current_user.username}"
     end
+  end
+
+  # Admin pages for game and page reviews
+  def admin
+    redirect_to_route_if_not_logged_in(route = 'login')
+    # is_not_admin?(route = 'dashboard')
+
+    @games = Game.where(needs_review: true).limit(10)
+    @game_total = @games.count
+
+    @practice = PracticeSession.where(needs_review: true).limit(10)
+    @practice_total = @practice.count  
+  end
+
+  def game_reviews
+
+    offset = 0
+    @games = Game.where(needs_review: true).limit(25).offset(offset)
+  end
+
+  def practice_reviews
+
+    offset = 0
+    @practice = PracticeSession.where(needs_review: true).limit(25)
   end
 
 end
