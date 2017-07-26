@@ -1,23 +1,23 @@
 class GamesController < ApplicationController
 
   def index
-    redirect_to_route_if_not_logged_in(route = '/login')
-    
+    redirect_to_route_if_not_logged_in(route = 'login')
+
   end
 
   def confirmation
-    redirect_to_route_if_not_logged_in(route = '/login')
-    
+    redirect_to_route_if_not_logged_in(route = 'login')
+
   end
 
   def show
-    redirect_to_route_if_not_logged_in(route = '/login')
-    
+    redirect_to_route_if_not_logged_in(route = 'login')
+
   end
 
   def new
-    redirect_to_route_if_not_logged_in(route = '/login')
-    
+    redirect_to_route_if_not_logged_in(route = 'login')
+
     @game = Game.new
   end
 
