@@ -31,7 +31,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/dashboard'
+      
+      sleep 3
+        redirect_to '/confirmation/payment-confirmed'
     else
 
       render :new
@@ -80,6 +82,9 @@ class UsersController < ApplicationController
     redirect_to_route_if_not_logged_in(route = 'login')
     is_not_admin?(route = 'dashboard')
 
+  end
+
+  def confirm_payment
   end
 
   def cancel_account
