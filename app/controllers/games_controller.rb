@@ -22,6 +22,14 @@ class GamesController < ApplicationController
 
   end
 
+  def admin_review
+    redirect_to_route_if_not_logged_in(route = 'login')
+    is_not_admin?(route = 'dashboard')
+
+    @game = Game.find_by(id: params[:id])
+    @user = User.find_by(id: @game.user_id)
+  end
+
   def new
     redirect_to_route_if_not_logged_in(route = 'login')
 

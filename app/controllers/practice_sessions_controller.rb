@@ -58,4 +58,12 @@ class PracticeSessionsController < ApplicationController
 
   end
 
+  def admin_review
+    redirect_to_route_if_not_logged_in(route = 'login')
+    is_not_admin?(route = 'dashboard')
+
+    @practice = PracticeSession.find_by(id: params[:id])
+    @user = User.find_by(id: @practice.user_id)
+  end
+
 end

@@ -20,7 +20,7 @@
             <td><%= @game.title %></td>
             <td><%= @game.date %></td>
             <td><%= @game.created_at %></td>
-            <td><a href="#" type="button" class="ui button green">Watch & Review</a></td>
+            <td><a href="/admin/game/<%= @game.id %>/show/admin-review" type="button" class="ui button green">Watch & Review</a></td>
           </tr>
         </tbody>
       </thead>
@@ -46,7 +46,7 @@
                 <td><%= game.title %></td>
                 <td><%= game.date %></td>
                 <td><%= game.created_at %></td>
-                <td><a href="#" type="button" class="ui button green">See Review</a></td>
+                <td><a href="/admin/game/<%= @game.id %>/show/admin-review" type="button" class="ui button green">See Review</a></td>
               <% end %>
             <% end %>
           </tr>
