@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/users/:username/cancel-account', to: 'users#cancel_account'
   get '/confirmation/delete-account', to: 'users#delete_account'
   get '/confirmation/payment-confirmed', to: 'users#confirm_payment'
+  patch '/admin/admin-access', to: 'users#admin_access'
 
   # practice sessions main page will join player tendencies
   get '/tendencies', to: 'practice_sessions#tendencies'

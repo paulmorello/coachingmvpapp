@@ -114,6 +114,29 @@ class UsersController < ApplicationController
     @practice_total = @practice.count
   end
 
+  def admin_access
+
+    user = User.find_by(email: params[:admin_email])
+
+    # check if user is admin, if not make admin
+    if !user.admin
+
+      user.admin = true
+
+      if user.save
+        redirect_to '/admin'
+      end
+    else
+
+      user.admin = false
+
+      if user.save
+        redirect_to '/admin'
+      end
+      redirect_to '/admin'
+    end
+  end
+
   def game_reviews
     redirect_to_route_if_not_logged_in(route = 'login')
     # is_not_admin?(route = 'dashboard')

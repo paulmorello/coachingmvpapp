@@ -2,6 +2,13 @@
   <section>
     <h2 class="ui header">Admin dashboard</h2>
 
+    <%= form_tag '/admin/admin-access', class: 'ui form', method: 'patch' do %>
+      <div class="field">
+        <label>Add or Remove Admin</label>
+        <input type="text" name="admin_email" placeholder="Enter email address">
+      </div>
+    <% end %>
+
     <%= form_tag '', class: 'ui form', method: 'get' do %>
       <div class="field">
         <label>Search for User by Email</label>
