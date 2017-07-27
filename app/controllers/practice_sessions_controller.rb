@@ -48,8 +48,14 @@ class PracticeSessionsController < ApplicationController
 
   def show
     redirect_to_route_if_not_logged_in(route = 'login')
-    # is_not_admin?(route = 'dashboard')
-    
+    is_not_admin?(route = 'dashboard')
+
+    @practice = PracticeSession.find_by(id: params[:id])
+    @user = User.find_by(id: @practice.user_id)
+
+    # Finding past reviewed games
+    @previous_practices = PracticeSession.where("needs_review = ? AND user_id = ?", false, @user.id)
+
   end
 
 end

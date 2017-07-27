@@ -1,1 +1,58 @@
-<h2>show details for individual games within the dashboard</h2>
+
+<div class="twelve wide column">
+
+  <section>
+    <h2><%= @user.first_name %> <%= @user.last_name %>, <%= @user.username %></h2>
+  </section>
+
+  <section>
+    <h2>Games <%= @user.first_name %> has for review</h2>
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Game Date</th>
+          <th>Date Uploaded</th>
+          <th></th>
+        </tr>
+        <tbody>
+          <tr>
+            <td><%= @game.title %></td>
+            <td><%= @game.date %></td>
+            <td><%= @game.created_at %></td>
+            <td><a href="#" type="button" class="ui button green">Watch & Review</a></td>
+          </tr>
+        </tbody>
+      </thead>
+    </table>
+  </section>
+
+  <section>
+    <h2>Previous games <%= @user.first_name %> has reviewed</h2>
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Game Date</th>
+          <th>Date Uploaded</th>
+          <th></th>
+        </tr>
+        <tbody>
+          <tr>
+            <% if @previous_games.empty? %>
+              <td>No Previous Games Reviewed</td>
+            <% else %>
+              <% @previous_games.each do |game| %>
+                <td><%= game.title %></td>
+                <td><%= game.date %></td>
+                <td><%= game.created_at %></td>
+                <td><a href="#" type="button" class="ui button green">See Review</a></td>
+              <% end %>
+            <% end %>
+          </tr>
+        </tbody>
+      </thead>
+    </table>
+  </section>
+
+</div>

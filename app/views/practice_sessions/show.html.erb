@@ -1,1 +1,58 @@
-<h2>Show details of the coaching review</h2>
+
+<div class="twelve wide column">
+
+  <section>
+    <h2><%= @user.first_name %> <%= @user.last_name %>, <%= @user.username %></h2>
+  </section>
+
+  <section>
+    <h2>Practice Sessions <%= @user.first_name %> has for review</h2>
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Game Date</th>
+          <th>Date Uploaded</th>
+          <th></th>
+        </tr>
+        <tbody>
+          <tr>
+            <td><%= @practice.title %></td>
+            <td><%= @practice.date %></td>
+            <td><%= @practice.created_at %></td>
+            <td><a href="#" type="button" class="ui button green">Watch & Review</a></td>
+          </tr>
+        </tbody>
+      </thead>
+    </table>
+  </section>
+
+  <section>
+    <h2>Previous Practice Sessions <%= @user.first_name %> has reviewed</h2>
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Game Date</th>
+          <th>Date Uploaded</th>
+          <th></th>
+        </tr>
+        <tbody>
+          <tr>
+            <% if @previous_practices.empty? %>
+              <td>No Previous Games Reviewed</td>
+            <% else %>
+              <% @previous_practices.each do |practice| %>
+                <td><%= practice.title %></td>
+                <td><%= practice.date %></td>
+                <td><%= practice.created_at %></td>
+                <td><a href="#" type="button" class="ui button green">See Review</a></td>
+              <% end %>
+            <% end %>
+          </tr>
+        </tbody>
+      </thead>
+    </table>
+  </section>
+
+</div>
