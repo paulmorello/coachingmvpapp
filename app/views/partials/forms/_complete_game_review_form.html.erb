@@ -1,0 +1,86 @@
+
+<!-- Form to complete review for games -->
+<%= form_tag '/stats', class: 'ui form', method: 'post' do%>
+
+  <div class="fields">
+
+    <!-- Hidden fields to pass user and game ids -->
+    <input type="hidden" name="game_id" value="<%= @game.id %>">
+    <input type="hidden" name="user_id" value="<%= @user.id %>">
+
+    <div class="one wide field">
+      <label>GS</label>
+      <input type="text" name="gs">
+    </div>
+    <div class="one wide field">
+      <label>Mins</label>
+      <input type="text" name="mins">
+    </div>
+    <div class="one wide field">
+      <label>FGM</label>
+      <input type="text" name="fgm">
+    </div>
+    <div class="one wide field">
+      <label>FGA</label>
+      <input type="text" name="fga">
+    </div>
+    <div class="one wide field">
+      <label>3PM</label>
+      <input type="text" name="tpm">
+    </div>
+    <div class="one wide field">
+      <label>3PA</label>
+      <input type="text" name="tpa">
+    </div>
+    <div class="one wide field">
+      <label>FTM</label>
+      <input type="text" name="ftm">
+    </div>
+    <div class="one wide field">
+      <label>FTA</label>
+      <input type="text" name="fta">
+    </div>
+    <div class="one wide field">
+      <label>ORB</label>
+      <input type="text" name="orb">
+    </div>
+    <div class="one wide field">
+      <label>DRB</label>
+      <input type="text" name="drb">
+    </div>
+    <div class="one wide field">
+      <label>AST</label>
+      <input type="text" name="assists">
+    </div>
+    <div class="one wide field">
+      <label>STL</label>
+      <input type="text" name="steals">
+    </div>
+    <div class="one wide field">
+      <label>BLK</label>
+      <input type="text" name="blocks">
+    </div>
+    <div class="one wide field">
+      <label>TO</label>
+      <input type="text" name="tos">
+    </div>
+    <div class="one wide field">
+      <label>PF</label>
+      <input type="text" name="pfs">
+    </div>
+    <div class="one wide field">
+      <label>PTS</label>
+      <input type="text" name="pts">
+    </div>
+    <div class="six wide field">
+      <label>Game Notes</label>
+      <textarea type="text" name="game_notes"></textarea>
+    </div>
+    <div class="six wide field">
+      <label>Player Tendencies</label>
+      <textarea type="text" name="player_tendencies"></textarea>
+    </div>
+    <button type="submit" target="_blank" class="ui button green">Complete Game Review</button>
+  </div>
+
+<% end %>

@@ -28,6 +28,12 @@ class GamesController < ApplicationController
 
     @game = Game.find_by(id: params[:id])
     @user = User.find_by(id: @game.user_id)
+
+    if @game.team_score > @game.opponent_score
+      @win_loss = 'Win'
+    else
+      @win_loss = 'Loss'
+    end
   end
 
   def new

@@ -10,34 +10,18 @@
 
   <section>
     <p>Admin must take all stats for the player number <%= @game.player_number %>, <%= @user.first_name %> <%= @user.last_name %>. Stats needed are as follows:</p>
-    <ul>
-      <li>Game Started</li>
-      <li>Minutes</li>
-      <li>Field Goals Attempted</li>
-      <li>Field Goals Made</li>
-      <li>Total Field Goals</li>
-      <li>Field Goal %</li>
-      <li>Three Pointer Made</li>
-      <li>Three Pointer Attempted</li>
-      <li>Three Point %</li>
-      <li>Free Throw Attempted</li>
-      <li>Free Throw Made</li>
-      <li>Free Throw %</li>
-      <li>Offensive Rebound</li>
-      <li>Defensive Rebound</li>
-      <li>Total Rebounds</li>
-      <li>Assists</li>
-      <li>Steals</li>
-      <li>Block</li>
-      <li>Turnovers</li>
-      <li>Personal Fouls</li>
-      <li>Points</li>
-    </ul>
+
     <p>It is also important to take notes of how the player approaches the game and areas they are in need of improvement. Consider things like shot selection, defensive pressure, not passing enough, passing too much, rebounding effort etc.</p>
   </section>
 
   <section>
-    <a href="#" class="ui button green">Complete Review</a>
+    <div>
+      <h2>Complete Review</h2>
+      <h3>Game Date: <%= @game.date %>, Opponent: <%= @game.opponent_name %>, <%= @win_loss %> </h3>
+    </div>
+    <div>
+      <%= render 'partials/forms/complete_game_review_form' %>
+    </div>
   </section>
 
 </div>
