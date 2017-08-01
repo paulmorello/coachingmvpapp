@@ -11,6 +11,9 @@ class StatsController < ApplicationController
     game = Game.find_by(id: params[:game_id])
     user = User.find_by(id: params[:user_id])
 
+    # update user information
+    user.game_id = game.id
+
     # create stats for game review
     stats = Stat.new
     stats.game_id =  params[:game_id]
@@ -45,18 +48,20 @@ class StatsController < ApplicationController
     stats.game_notes = params[:game_notes]
     stats.player_tendencies = params[:player_tendencies]
 
-    if stats.save
-      game.stat_id = stats.id
-      game.needs_review = false
+    if user.save
 
-      if game.save
-        redirect_to '/admin'
+      if stats.save
+        game.stat_id = stats.id
+        game.needs_review = false
+
+        if game.save
+          redirect_to '/admin'
+        end
+
+      else
+        redirect_to "/admin/game/#{game.id}/show/admin-review"
       end
-      
-    else
-      redirect_to "/admin/game/#{game.id}/show/admin-review"
     end
-
   end
 
 end

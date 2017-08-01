@@ -17,8 +17,14 @@
   </section>
 
   <section>
-    <a href="#" class="ui button green">Complete Review</a>
-  </section>
+    <div>
+      <h2>Complete Review</h2>
+      <h3>Practice Date: <%= @practice.date %>, Player Name: <%= @user.first_name %> <%= @user.last_name %> </h3>
+    </div>
 
+    <div>
+      <%= render 'partials/forms/complete_practice_review_form' %>
+    </div>
+  </section>
 
 </div>

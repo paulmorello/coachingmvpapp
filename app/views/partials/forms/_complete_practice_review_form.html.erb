@@ -1,0 +1,25 @@
+<!-- Form to complete review for practice sessions -->
+<%= form_tag '/complete-practice-review', class: 'ui form', method: 'patch' do%>
+
+  <div class="fields">
+
+    <!-- Hidden fields to pass user and practice ids -->
+    <input type="hidden" name="practice_id" value="<%= @practice.id %>">
+    <input type="hidden" name="user_id" value="<%= @user.id %>">
+
+    <div class="four wide field">
+      <label>Future Focus</label>
+      <input type="text" name="focus">
+    </div>
+    <div class="six wide field">
+      <label>Practice Notes</label>
+      <textarea type="text" name="practice_notes"></textarea>
+    </div>
+    <div class="six wide field">
+      <label>Additional Notes</label>
+      <textarea type="text" name="additional_notes"></textarea>
+    </div>
+    <button type="submit" target="_blank" class="ui button green">Complete Practice Review</button>
+  </div>
+
+<% end %>

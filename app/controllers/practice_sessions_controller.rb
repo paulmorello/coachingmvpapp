@@ -66,4 +66,28 @@ class PracticeSessionsController < ApplicationController
     @user = User.find_by(id: @practice.user_id)
   end
 
+  def complete_review
+
+    # Updating user and Practice session properties
+    @practice = PracticeSession.find_by(id: params[:practice_id])
+    @user = User.find_by(id: params[:user_id])
+
+    # update practice session id
+    @user.practice_session_id = @practice.id
+
+    # Update practice properties
+    @practice.focus = params[:focus]
+    @practice.pratice_notes = params[:practice_notes]
+    @practice.additional_notes = params[:additional_notes]
+
+    if @user.save
+      @practice.needs_review = false
+      if @practice.save
+        redirect_to '/admin'
+      else
+        redirect_to "/admin/practice/#{@practice.id}/show/admin-review"
+      end
+    end
+
+  end
 end

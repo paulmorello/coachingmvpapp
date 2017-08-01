@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get '/practice/confirmation', to: 'practice_sessions#confirmation'
   get '/admin/practice/:id/show', to: 'practice_sessions#show'
   get '/admin/practice/:id/show/admin-review', to: 'practice_sessions#admin_review'
+  patch '/complete-practice-review', to: 'practice_sessions#complete_review'
 
   # game confirmation page and show pages
   get '/game/confirmation', to: 'games#confirmation'
