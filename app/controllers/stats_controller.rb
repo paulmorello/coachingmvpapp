@@ -55,7 +55,7 @@ class StatsController < ApplicationController
         game.needs_review = false
 
         if game.save
-          redirect_to '/admin'
+          redirect_to '/admin/complete-game-review/confirmed'
         end
 
       else

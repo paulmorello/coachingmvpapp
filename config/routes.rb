@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # landing page and dashboard routes
   get '/', to: 'users#home'
-  get '/dashboard', to: 'users#dashboard'
+  get '/dashboard/', to: 'users#dashboard'
 
   # main admin page to show all games and practice sessions for review
   get '/admin', to: 'users#admin'
@@ -32,10 +32,12 @@ Rails.application.routes.draw do
   get '/admin/practice/:id/show', to: 'practice_sessions#show'
   get '/admin/practice/:id/show/admin-review', to: 'practice_sessions#admin_review'
   patch '/complete-practice-review', to: 'practice_sessions#complete_review'
+  get '/admin/complete-practice-review/confirmed', to: 'practice_sessions#confirm_complete_review'
 
   # game confirmation page and show pages
   get '/game/confirmation', to: 'games#confirmation'
   get '/admin/game/:id/show', to: 'games#show'
   get '/admin/game/:id/show/admin-review', to: 'games#admin_review'
+  get '/admin/complete-game-review/confirmed', to: 'games#confirm_complete_review'
 
 end

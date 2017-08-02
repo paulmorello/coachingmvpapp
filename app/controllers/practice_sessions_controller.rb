@@ -83,11 +83,17 @@ class PracticeSessionsController < ApplicationController
     if @user.save
       @practice.needs_review = false
       if @practice.save
-        redirect_to '/admin'
+        redirect_to '/admin/complete-practice-review/confirmed'
       else
         redirect_to "/admin/practice/#{@practice.id}/show/admin-review"
       end
     end
-
   end
+
+  def confirm_complete_review
+    redirect_to_route_if_not_logged_in(route = 'login')
+    is_not_admin?(route = 'dashboard')
+    
+  end
+
 end

@@ -17,6 +17,10 @@ class GamesController < ApplicationController
     @game = Game.find_by(id: params[:id])
     @user = User.find_by(id: @game.user_id)
 
+    if @game.user_id != @user.id
+      redirect_to '/dashboard'
+    end
+
     # Finding past reviewed games
     @previous_games = Game.where("needs_review = ? AND user_id = ?", false, @user.id)
 
@@ -68,6 +72,12 @@ class GamesController < ApplicationController
     else
       render :new
     end
+
+  end
+
+  def confirm_complete_review
+    redirect_to_route_if_not_logged_in(route = 'login')
+    is_not_admin?(route = 'dashboard')
 
   end
 
