@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # landing page and dashboard routes
   get '/', to: 'users#home'
-  get '/dashboard/', to: 'users#dashboard'
+  get '/dashboard/:username', to: 'users#dashboard'
 
   # main admin page to show all games and practice sessions for review
   get '/admin', to: 'users#admin'
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   patch '/admin/admin-access', to: 'users#admin_access'
 
   # practice sessions main page will join player tendencies
-  get '/tendencies', to: 'practice_sessions#tendencies'
+  get '/tendencies/:username', to: 'practice_sessions#tendencies'
   get '/tendencies/new', to: 'practice_sessions#new'
   get '/practice/confirmation', to: 'practice_sessions#confirmation'
   get '/admin/practice/:id/show', to: 'practice_sessions#show'
@@ -35,9 +35,13 @@ Rails.application.routes.draw do
   get '/admin/complete-practice-review/confirmed', to: 'practice_sessions#confirm_complete_review'
 
   # game confirmation page and show pages
+  get '/games/:username', to: 'games#index'
   get '/game/confirmation', to: 'games#confirmation'
   get '/admin/game/:id/show', to: 'games#show'
   get '/admin/game/:id/show/admin-review', to: 'games#admin_review'
   get '/admin/complete-game-review/confirmed', to: 'games#confirm_complete_review'
+
+  # user stat show page
+  get '/stats/:username', to: 'stats#index'
 
 end

@@ -2,7 +2,14 @@
   <nav>
     <div class="ui large menu">
       <div class="left menu">
-        <div class="item"><a href="/dashboard">[LOGO Here]</a></div>
+        <div class="item">
+
+          <!-- Check if logged in and redirect to home page if not -->
+          <% if logged_in? %>
+            <a href="/dashboard/<%= current_user.username %>">[LOGO Here]</a></div>
+          <% else %>
+            <a href="/">[LOGO Here]</a></div>
+          <% end %>
 
         <!-- Menu for logged in users -->
         <% if logged_in? %>

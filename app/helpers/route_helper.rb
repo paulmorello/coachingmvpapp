@@ -16,7 +16,7 @@ module RouteHelper
     if logged_in?
       @user = current_user
       if @user == nil || !@user.admin
-        redirect_to "/#{route}"
+        redirect_to ("/#{route}")
       end
     end
   end

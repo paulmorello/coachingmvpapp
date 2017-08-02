@@ -7,10 +7,11 @@ class UsersController < ApplicationController
   def dashboard
     redirect_to_route_if_not_logged_in(route = 'login')
 
+    @user = current_user
   end
 
   def new
-    redirect_to_route_if_logged_in(route = 'dashboard')
+    redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
 
     # new user instance for errors
     @user = User.new
@@ -105,7 +106,7 @@ class UsersController < ApplicationController
   # Admin pages for game and page reviews
   def admin
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = 'dashboard')
+    is_not_admin?(route = "dashboard/#{current_user.username}")
 
     @games = Game.where(needs_review: true).limit(10)
     @game_total = @games.count
@@ -139,7 +140,7 @@ class UsersController < ApplicationController
 
   def game_reviews
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = 'dashboard')
+    is_not_admin?(route = "dashboard/#{current_user.username}")
 
     offset = 0
     @games = Game.where(needs_review: true).limit(25).offset(offset)
@@ -147,10 +148,10 @@ class UsersController < ApplicationController
 
   def practice_reviews
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = 'dashboard')
+    is_not_admin?(route = "dashboard/#{current_user.username}")
 
     offset = 0
-    @practice = PracticeSession.where(needs_review: true).limit(25)
+    @practice = PracticeSession.where(needs_review: true).limit(25).offset(offset)
   end
 
 end

@@ -2,14 +2,13 @@ class SessionController < ApplicationController
 
 
   def new
-    redirect_to_route_if_logged_in(route = 'dashboard')
 
   end
 
   def create
 
     @user = User.find_by(email: params[:email])
-    user_authenticate('dashboard')
+    user_authenticate("dashboard/#{@user.username}")
 
   end
 
