@@ -3,7 +3,7 @@ class PracticeSessionsController < ApplicationController
   def tendencies
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access
+    not_allowed_access?
 
   end
 
@@ -50,7 +50,9 @@ class PracticeSessionsController < ApplicationController
 
   def show
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "dashboard/#{current_user.username}")
+    if logged_in?
+      is_not_admin?(route = "dashboard/#{current_user.username}")
+    end
 
     @practice = PracticeSession.find_by(id: params[:id])
     @user = User.find_by(id: @practice.user_id)
@@ -62,7 +64,9 @@ class PracticeSessionsController < ApplicationController
 
   def admin_review
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "dashboard/#{current_user.username}")
+    if logged_in
+      is_not_admin?(route = "dashboard/#{current_user.username}")
+    end
 
     @practice = PracticeSession.find_by(id: params[:id])
     @user = User.find_by(id: @practice.user_id)
@@ -94,8 +98,10 @@ class PracticeSessionsController < ApplicationController
 
   def confirm_complete_review
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "dashboard/#{current_user.username}")
-
+    if logged_in
+      is_not_admin?(route = "dashboard/#{current_user.username}")
+    end
+    
   end
 
 end

@@ -35,13 +35,13 @@ Rails.application.routes.draw do
   get '/admin/complete-practice-review/confirmed', to: 'practice_sessions#confirm_complete_review'
 
   # game confirmation page and show pages
-  get '/games/:username', to: 'games#index'
+  get '/games/member/:username', to: 'games#index'
   get '/game/confirmation', to: 'games#confirmation'
   get '/admin/game/:id/show', to: 'games#show'
   get '/admin/game/:id/show/admin-review', to: 'games#admin_review'
   get '/admin/complete-game-review/confirmed', to: 'games#confirm_complete_review'
 
   # user stat show page
-  get '/stats/:username', to: 'stats#index'
+  get '/stats/member/:username', to: 'stats#index'
 
 end

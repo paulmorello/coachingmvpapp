@@ -21,8 +21,8 @@
     <% end %>
 
     <!-- Only show the vertical menu on the following pages -->
-    <% if logged_in? %>
-      <% if current_page?("/dashboard/#{@user.username}") || current_page?("/stats/#{@user.username}") || current_page?("/games/#{@user.username}") || current_page?("/tendencies/#{@user.username}") || current_page?("/drills")%>
+    <% if logged_in? && @user != nil %>
+      <% if current_page?("/dashboard/#{@user.username}") || current_page?("/stats/member/#{@user.username}") || current_page?("/games/member/#{@user.username}") || current_page?("/tendencies/#{@user.username}") || current_page?("/drills")%>
         <div class="ui grid">
           <%= render 'partials/navigation/vertical_nav' %>
       <% end %>

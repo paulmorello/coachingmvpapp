@@ -2,7 +2,8 @@ class GamesController < ApplicationController
 
   def index
     redirect_to_route_if_not_logged_in(route = 'login')
-    not_allowed_access
+    @user = current_user
+    not_allowed_access?
 
   end
 
@@ -13,7 +14,9 @@ class GamesController < ApplicationController
 
   def show
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "/dashboard/#{current_user.username}")
+    if logged_in?
+      is_not_admin?(route = "/dashboard/#{current_user.username}")
+    end
 
     @game = Game.find_by(id: params[:id])
     @user = User.find_by(id: @game.user_id)
@@ -29,7 +32,9 @@ class GamesController < ApplicationController
 
   def admin_review
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "/dashboard/#{current_user.username}")
+    if logged_in?
+      is_not_admin?(route = "/dashboard/#{current_user.username}")
+    end
 
     @game = Game.find_by(id: params[:id])
     @user = User.find_by(id: @game.user_id)
@@ -78,7 +83,9 @@ class GamesController < ApplicationController
 
   def confirm_complete_review
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "dashboard/#{current_user.username}")
+    if logged_in?
+      is_not_admin?(route = "dashboard/#{current_user.username}")
+    end
 
   end
 

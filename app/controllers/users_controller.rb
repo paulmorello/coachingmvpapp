@@ -7,12 +7,14 @@ class UsersController < ApplicationController
   def dashboard
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access
+    not_allowed_access?
 
   end
 
   def new
-    redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
+    if logged_in?
+      redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
+    end
 
     # new user instance for errors
     @user = User.new
@@ -46,14 +48,14 @@ class UsersController < ApplicationController
   def show
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access
+    not_allowed_access?
 
   end
 
   def edit
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access
+    not_allowed_access?
 
   end
 
@@ -80,7 +82,7 @@ class UsersController < ApplicationController
   def update_payment
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access
+    not_allowed_access?
   end
 
   def confirm_payment
@@ -89,13 +91,13 @@ class UsersController < ApplicationController
   def cancel_account
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access
+    not_allowed_access?
   end
 
   def delete_account
     @user = current_user
-    not_allowed_access
-    
+    not_allowed_access?
+
   end
 
   def destroy
@@ -115,7 +117,9 @@ class UsersController < ApplicationController
   # Admin pages for game and page reviews
   def admin
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "dashboard/#{current_user.username}")
+    if logged_in?
+      is_not_admin?(route = "dashboard/#{current_user.username}")
+    end
 
     @games = Game.where(needs_review: true).limit(10)
     @game_total = @games.count
@@ -149,7 +153,9 @@ class UsersController < ApplicationController
 
   def game_reviews
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "dashboard/#{current_user.username}")
+    if logged_in?
+      is_not_admin?(route = "dashboard/#{current_user.username}")
+    end
 
     offset = 0
     @games = Game.where(needs_review: true).limit(25).offset(offset)
@@ -157,7 +163,9 @@ class UsersController < ApplicationController
 
   def practice_reviews
     redirect_to_route_if_not_logged_in(route = 'login')
-    is_not_admin?(route = "dashboard/#{current_user.username}")
+    if logged_in?
+      is_not_admin?(route = "dashboard/#{current_user.username}")
+    end
 
     offset = 0
     @practice = PracticeSession.where(needs_review: true).limit(25).offset(offset)
