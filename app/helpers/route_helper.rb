@@ -21,4 +21,10 @@ module RouteHelper
     end
   end
 
+  def not_allowed_access?
+    if @user.username != params[:username]
+      redirect_to "/dashboard/#{current_user.username}"
+    end
+  end
+
 end

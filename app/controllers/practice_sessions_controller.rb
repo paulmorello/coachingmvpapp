@@ -2,6 +2,8 @@ class PracticeSessionsController < ApplicationController
 
   def tendencies
     redirect_to_route_if_not_logged_in(route = 'login')
+    @user = current_user
+    not_allowed_access
 
   end
 

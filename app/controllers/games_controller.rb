@@ -2,6 +2,7 @@ class GamesController < ApplicationController
 
   def index
     redirect_to_route_if_not_logged_in(route = 'login')
+    not_allowed_access
 
   end
 

@@ -6,8 +6,9 @@ class UsersController < ApplicationController
 
   def dashboard
     redirect_to_route_if_not_logged_in(route = 'login')
-
     @user = current_user
+    not_allowed_access
+
   end
 
   def new
@@ -44,13 +45,15 @@ class UsersController < ApplicationController
 
   def show
     redirect_to_route_if_not_logged_in(route = 'login')
+    @user = current_user
+    not_allowed_access
 
   end
 
   def edit
     redirect_to_route_if_not_logged_in(route = 'login')
-
     @user = current_user
+    not_allowed_access
 
   end
 
@@ -76,7 +79,8 @@ class UsersController < ApplicationController
 
   def update_payment
     redirect_to_route_if_not_logged_in(route = 'login')
-
+    @user = current_user
+    not_allowed_access
   end
 
   def confirm_payment
@@ -84,9 +88,14 @@ class UsersController < ApplicationController
 
   def cancel_account
     redirect_to_route_if_not_logged_in(route = 'login')
+    @user = current_user
+    not_allowed_access
   end
 
   def delete_account
+    @user = current_user
+    not_allowed_access
+    
   end
 
   def destroy
