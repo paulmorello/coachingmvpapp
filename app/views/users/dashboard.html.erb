@@ -1,8 +1,15 @@
 
-<div class="eleven wide column">
-  <h2 class="ui header">Dashboard for <%= @user.first_name %> <%= @user.last_name %></h2>
+<div class="eleven wide column dashboard-main">
+  <section class="dashboard-header">
+    <div class="dashboard-header-left">
+      <img class="dashboard-image" src="<%= @user.avatar %>" alt="">
+    </div>
+    <div class="dashboard-header-right">
+      <h2 class="ui header">Dashboard for <%= @user.first_name %> <%= @user.last_name %></h2>
+    </div>
+  </section>
 
-  <section>
+  <section class="dashboard-middle">
     <div>
       <h3 class="ui header">Your Previously Reviewed Games</h3>
     </div>
@@ -43,6 +50,7 @@
           <th>Mins</th>
           <th>FGM</th>
           <th>FGA</th>
+          <th>FGP</th>
           <th>3PM</th>
           <th>3PA</th>
           <th>3PP</th>
@@ -60,32 +68,31 @@
           <th>PTS</th>
         </tr>
         <tbody>
-          <% if @stats.empty? %>
+          <% if @averages.empty? %>
             <td>No Previous Games Reviewed</td>
           <% else %>
-            <% @stats.each do |game| %>
-              <tr>
-                <td><%= game.game_started %></td>
-                <td><%= game.minutes %></td>
-                <td><%= game.fgm %></td>
-                <td><%= game.fga %></td>
-                <td><%= game.threepm %></td>
-                <td><%= game.threepa %></td>
-                <td><%= game.threepp %></td>
-                <td><%= game.ftm %></td>
-                <td><%= game.fta %></td>
-                <td><%= game.ftp %></td>
-                <td><%= game.offensive_reb %></td>
-                <td><%= game.defensive_reb %></td>
-                <td><%= game.total_reb %></td>
-                <td><%= game.assists %></td>
-                <td><%= game.steals %></td>
-                <td><%= game.block %></td>
-                <td><%= game.turnovers %></td>
-                <td><%= game.pfs %></td>
-                <td><%= game.points %></td>
-              </tr>
-            <% end %>
+            <tr>
+              <td><%= @averages["gs"] %></td>
+              <td><%= @averages["mins"] %></td>
+              <td><%= @averages["fgm"] %></td>
+              <td><%= @averages["fga"] %></td>
+              <td><%= @averages["fgp"] %>%</td>
+              <td><%= @averages["threepm"] %></td>
+              <td><%= @averages["threepa"] %></td>
+              <td><%= @averages["threepp"] %>%</td>
+              <td><%= @averages["ftm"] %></td>
+              <td><%= @averages["fta"] %></td>
+              <td><%= @averages["ftp"] %>%</td>
+              <td><%= @averages["orb"] %></td>
+              <td><%= @averages["drb"] %></td>
+              <td><%= @averages["trb"] %></td>
+              <td><%= @averages["ast"] %></td>
+              <td><%= @averages["stl"] %></td>
+              <td><%= @averages["blk"] %></td>
+              <td><%= @averages["to"] %></td>
+              <td><%= @averages["pfs"] %></td>
+              <td><%= @averages["pts"] %></td>
+            </tr>
           <% end %>
         </tbody>
       </thead>

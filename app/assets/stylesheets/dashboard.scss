@@ -1,0 +1,33 @@
+
+// CSS for main dashboard page
+.dashboard-main {
+  width: 100%;
+
+  .dashboard-header {
+    width: 100%;
+    display: block;
+
+    .dashboard-header-left {
+      display: inline-block;
+      width: 20%;
+
+      .dashboard-image {
+        border-radius: 100%;
+        width: 10em;
+        margin: .5em;
+      }
+    }
+
+    .dashboard-header-right {
+      display: inline-block;
+      width: 70%;
+
+      .dashboard-header h2 {
+        width: 20%;
+        height: 100%;
+        text-align: left;
+        vertical-align: middle;
+      }
+    }
+  }
+}

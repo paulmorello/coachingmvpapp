@@ -38,18 +38,18 @@
           <th></th>
         </tr>
         <tbody>
-          <tr>
-            <% if @previous_games.empty? %>
-              <td>No Previous Games Reviewed</td>
-            <% else %>
+          <% if @previous_games.empty? %>
+            <td>No Previous Games Reviewed</td>
+          <% else %>
+            <tr>
               <% @previous_games.each do |game| %>
                 <td><%= game.title %></td>
                 <td><%= game.date %></td>
                 <td><%= game.created_at %></td>
                 <td><a href="/admin/game/<%= @game.id %>/show/admin-review" type="button" class="ui button green">See Review</a></td>
-              <% end %>
+              </tr>
             <% end %>
-          </tr>
+          <% end %>
         </tbody>
       </thead>
     </table>

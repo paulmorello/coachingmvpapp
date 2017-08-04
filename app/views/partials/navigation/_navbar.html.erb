@@ -33,7 +33,7 @@
           <a class="item" href="/practice_sessions/new">Upload Practice Session</a>
           <a class="item" href="/games/new">Upload Game Footage</a>
           <div class="ui dropdown item">
-            <%= current_user.username %> <i class="dropdown icon"></i>
+            <img class="ui avatar mini image" src="<%= current_user.avatar %>"><span> <%= current_user.username %> <i class="dropdown icon"></i></span> 
             <div class="menu">
               <a class="item">Hi <%= current_user.first_name %></a>
               <a class="item" href="/users/<%= current_user.username %>">Account Details</a>
