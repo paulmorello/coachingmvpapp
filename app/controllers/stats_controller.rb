@@ -3,8 +3,11 @@ class StatsController < ApplicationController
   def index
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access?
 
+    if @user != nil
+      not_allowed_access?
+
+    end
   end
 
   def create

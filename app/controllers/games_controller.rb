@@ -3,11 +3,13 @@ class GamesController < ApplicationController
   def index
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access?
 
-    # Finding past reviewed games
-    @previous_games = Game.where("needs_review = ? AND user_id = ?", false, @user.id).limit(10)
+    if @user != nil
+      not_allowed_access?
 
+      # Finding past reviewed games
+      @previous_games = Game.where("needs_review = ? AND user_id = ?", false, @user.id).limit(10)
+    end
   end
 
   def confirmation

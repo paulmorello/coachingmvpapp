@@ -3,11 +3,14 @@ class PracticeSessionsController < ApplicationController
   def tendencies
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access?
 
-    # Finding past reviewed games
-    @previous_practices = PracticeSession.where("needs_review = ? AND user_id = ?", false, @user.id)
+    if @user != nil
+      not_allowed_access?
+      
 
+      # Finding past reviewed games
+      @previous_practices = PracticeSession.where("needs_review = ? AND user_id = ?", false, @user.id)
+    end
   end
 
   def confirmation

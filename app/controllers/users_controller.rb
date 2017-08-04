@@ -6,61 +6,66 @@ class UsersController < ApplicationController
 
   def dashboard
     redirect_to_route_if_not_logged_in(route = 'login')
+
+    # check if user is logged in again
     @user = current_user
-    not_allowed_access?
 
-    # Finding past reviewed games
-    @previous_games = Game.where("needs_review = ? AND user_id = ?", false, @user.id).limit(3)
+    if @user != nil
+      not_allowed_access?
 
-    # Stats for averages
-    @stats = Stat.where("user_id = ?", @user.id)
+      # Finding past reviewed games
+      @previous_games = Game.where("needs_review = ? AND user_id = ?", false, @user.id).limit(3)
 
-    @averages = {}
-    @stats.each do |stat|
-      if stat.game_started
-        @averages["gs"] = @averages["gs"].to_i + 1
+      # Stats for averages
+      @stats = Stat.where("user_id = ?", @user.id)
+
+      @averages = {}
+      @stats.each do |stat|
+        if stat.game_started
+          @averages["gs"] = @averages["gs"].to_i + 1
+        end
+        @averages["mins"] = @averages["mins"].to_i + stat.minutes
+        @averages["fgm"] = @averages["fgm"].to_f + stat.fgm
+        @averages["fga"] = @averages["fga"].to_f + stat.fga
+        @averages["fgp"] = @averages["fgp"].to_i + stat.fgp
+        @averages["threepm"] = @averages["threepm"].to_f + stat.threepm
+        @averages["threepa"] = @averages["threepa"].to_f + stat.threepa
+        @averages["threepp"] = @averages["threepp"].to_i + stat.threepp
+        @averages["ftm"] = @averages["ftm"].to_f + stat.ftm
+        @averages["fta"] = @averages["fta"].to_f + stat.fta
+        @averages["ftp"] = @averages["ftp"].to_i + stat.ftp
+        @averages["orb"] = @averages["orb"].to_f + stat.offensive_reb
+        @averages["drb"] = @averages["drb"].to_f + stat.defensive_reb
+        @averages["trb"] = @averages["trb"].to_i + stat.total_reb
+        @averages["ast"] = @averages["ast"].to_f + stat.assists
+        @averages["stl"] = @averages["stl"].to_f + stat.steals
+        @averages["blk"] = @averages["blk"].to_f + stat.block
+        @averages["to"] = @averages["to"].to_f + stat.turnovers
+        @averages["pfs"] = @averages["pfs"].to_f + stat.pfs
+        @averages["pts"] = @averages["pts"].to_f + stat.points
       end
-      @averages["mins"] = @averages["mins"].to_i + stat.minutes
-      @averages["fgm"] = @averages["fgm"].to_f + stat.fgm
-      @averages["fga"] = @averages["fga"].to_f + stat.fga
-      @averages["fgp"] = @averages["fgp"].to_i + stat.fgp
-      @averages["threepm"] = @averages["threepm"].to_f + stat.threepm
-      @averages["threepa"] = @averages["threepa"].to_f + stat.threepa
-      @averages["threepp"] = @averages["threepp"].to_i + stat.threepp
-      @averages["ftm"] = @averages["ftm"].to_f + stat.ftm
-      @averages["fta"] = @averages["fta"].to_f + stat.fta
-      @averages["ftp"] = @averages["ftp"].to_i + stat.ftp
-      @averages["orb"] = @averages["orb"].to_f + stat.offensive_reb
-      @averages["drb"] = @averages["drb"].to_f + stat.defensive_reb
-      @averages["trb"] = @averages["trb"].to_i + stat.total_reb
-      @averages["ast"] = @averages["ast"].to_f + stat.assists
-      @averages["stl"] = @averages["stl"].to_f + stat.steals
-      @averages["blk"] = @averages["blk"].to_f + stat.block
-      @averages["to"] = @averages["to"].to_f + stat.turnovers
-      @averages["pfs"] = @averages["pfs"].to_f + stat.pfs
-      @averages["pts"] = @averages["pts"].to_f + stat.points
+
+      @averages["mins"] = @averages["mins"]/@stats.count
+      @averages["fgm"] = (@averages["fgm"]/@stats.count).round(1)
+      @averages["fga"] = (@averages["fga"]/@stats.count).round(1)
+      @averages["fgp"] = @averages["fgp"]/@stats.count
+      @averages["threepm"] = (@averages["threepm"]/@stats.count).round(1)
+      @averages["threepa"] = (@averages["threepa"]/@stats.count).round(1)
+      @averages["threepp"] = @averages["threepp"]/@stats.count
+      @averages["ftm"] = (@averages["ftm"]/@stats.count).round(1)
+      @averages["fta"] = (@averages["fta"]/@stats.count).round(1)
+      @averages["ftp"] = (@averages["ftp"]/@stats.count).round(1)
+      @averages["orb"] = (@averages["orb"]/@stats.count).round(1)
+      @averages["drb"] = (@averages["drb"]/@stats.count).round(1)
+      @averages["trb"] = (@averages["trb"]/@stats.count).round(1)
+      @averages["ast"] = (@averages["ast"]/@stats.count).round(1)
+      @averages["stl"] = (@averages["stl"]/@stats.count).round(1)
+      @averages["blk"] = (@averages["blk"]/@stats.count).round(1)
+      @averages["to"] = (@averages["to"]/@stats.count).round(1)
+      @averages["pfs"] = (@averages["pfs"]/@stats.count).round(1)
+      @averages["pts"] = (@averages["pts"]/@stats.count).round(1)
+
     end
-
-    @averages["mins"] = @averages["mins"]/@stats.count
-    @averages["fgm"] = (@averages["fgm"]/@stats.count).round(1)
-    @averages["fga"] = (@averages["fga"]/@stats.count).round(1)
-    @averages["fgp"] = @averages["fgp"]/@stats.count
-    @averages["threepm"] = (@averages["threepm"]/@stats.count).round(1)
-    @averages["threepa"] = (@averages["threepa"]/@stats.count).round(1)
-    @averages["threepp"] = @averages["threepp"]/@stats.count
-    @averages["ftm"] = (@averages["ftm"]/@stats.count).round(1)
-    @averages["fta"] = (@averages["fta"]/@stats.count).round(1)
-    @averages["ftp"] = (@averages["ftp"]/@stats.count).round(1)
-    @averages["orb"] = (@averages["orb"]/@stats.count).round(1)
-    @averages["drb"] = (@averages["drb"]/@stats.count).round(1)
-    @averages["trb"] = (@averages["trb"]/@stats.count).round(1)
-    @averages["ast"] = (@averages["ast"]/@stats.count).round(1)
-    @averages["stl"] = (@averages["stl"]/@stats.count).round(1)
-    @averages["blk"] = (@averages["blk"]/@stats.count).round(1)
-    @averages["to"] = (@averages["to"]/@stats.count).round(1)
-    @averages["pfs"] = (@averages["pfs"]/@stats.count).round(1)
-    @averages["pts"] = (@averages["pts"]/@stats.count).round(1)
-
   end
 
   def new
@@ -100,15 +105,21 @@ class UsersController < ApplicationController
   def show
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access?
 
+    if @user != nil
+      not_allowed_access?
+
+    end
   end
 
   def edit
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access?
 
+    if @user != nil
+      not_allowed_access?
+
+    end
   end
 
   def update
@@ -134,7 +145,11 @@ class UsersController < ApplicationController
   def update_payment
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access?
+
+    if @user != nil
+      not_allowed_access?
+
+    end
   end
 
   def confirm_payment
@@ -143,13 +158,20 @@ class UsersController < ApplicationController
   def cancel_account
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
-    not_allowed_access?
+
+    if @user != nil
+      not_allowed_access?
+
+    end
   end
 
   def delete_account
     @user = current_user
-    not_allowed_access?
 
+    if @user != nil
+      not_allowed_access?
+
+    end
   end
 
   def destroy
