@@ -5,7 +5,8 @@ class GamesController < ApplicationController
     @user = current_user
     not_allowed_access?
 
-
+    # Finding past reviewed games
+    @previous_games = Game.where("needs_review = ? AND user_id = ?", false, @user.id).limit(10)
 
   end
 

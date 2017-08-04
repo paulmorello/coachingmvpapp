@@ -5,6 +5,9 @@ class PracticeSessionsController < ApplicationController
     @user = current_user
     not_allowed_access?
 
+    # Finding past reviewed games
+    @previous_practices = PracticeSession.where("needs_review = ? AND user_id = ?", false, @user.id)
+
   end
 
   def confirmation
@@ -101,7 +104,7 @@ class PracticeSessionsController < ApplicationController
     if logged_in
       is_not_admin?(route = "dashboard/#{current_user.username}")
     end
-    
+
   end
 
 end
