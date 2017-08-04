@@ -5,6 +5,8 @@ class GamesController < ApplicationController
     @user = current_user
     not_allowed_access?
 
+
+
   end
 
   def confirmation

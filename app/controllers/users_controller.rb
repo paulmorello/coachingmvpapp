@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     @user = current_user
     not_allowed_access?
 
+    # Finding past reviewed games
+    @previous_games = Game.where("needs_review = ? AND user_id = ?", false, @user.id).limit(5)
+
+    # Stats for averages
+    @stats = Stat.where("user_id = ?", @user.id)
   end
 
   def new
