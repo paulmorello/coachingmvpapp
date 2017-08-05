@@ -13,8 +13,9 @@ class UsersController < ApplicationController
     if @user != nil
       not_allowed_access?
 
-      # Finding past reviewed games
+      # Finding past reviewed games and practice session
       @previous_games = Game.where("needs_review = ? AND user_id = ?", false, @user.id).limit(3)
+      @previous_practices = PracticeSession.where("needs_review = ? AND user_id = ?", false, @user.id).limit(3)
 
       # Stats for averages
       @stats = Stat.where("user_id = ?", @user.id)
