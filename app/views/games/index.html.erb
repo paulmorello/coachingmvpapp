@@ -1,7 +1,7 @@
-<div class="eight wide column">
+<div class="ten wide column">
   <section class="games-header">
     <div class="games-heading">
-      <h2 class="ui header">Reviewed Game Footage</h3>
+      <h2 class="ui header">Reviewed Game Footage</h2>
     </div>
   </section>
 
@@ -27,7 +27,7 @@
                 <td><%= game.title %></td>
                 <td><%= game.date %></td>
                 <td><%= game.team_name %></td>
-                <td><a href="#" type="button" class="ui button green">See Game Review</a></td>
+                <td><a href="/games/member/<%= current_user.username %>/<%= game.id %>" type="button" class="ui button green">See Game Review</a></td>
               </tr>
             <% end %>
           <% end %>

@@ -1,0 +1,91 @@
+
+<div class="eleven wide column game-view-main">
+  <section class="dashboard-header">
+    <div class="dashboard-header-left">
+      <h2 class="ui header"><%= @game.title %></h2>
+      <h4>Game Date: <%= @game.date %></h4>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h3 class="ui header">Game Stats</h3>
+    </div>
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>GS</th>
+          <th>Mins</th>
+          <th>FGM</th>
+          <th>FGA</th>
+          <th>FGP</th>
+          <th>3PM</th>
+          <th>3PA</th>
+          <th>3PP</th>
+          <th>FTM</th>
+          <th>FTA</th>
+          <th>FTP</th>
+          <th>ORB</th>
+          <th>DRB</th>
+          <th>TRB</th>
+          <th>AST</th>
+          <th>STL</th>
+          <th>BLK</th>
+          <th>TO</th>
+          <th>PF</th>
+          <th>PTS</th>
+        </tr>
+        <tbody>
+          <% if !@stats %>
+            <td>There is an error retrieving your stats.</td>
+          <% else %>
+            <tr>
+              <td><%= @stats["game_started"] ? "1" : "0"%></td>
+              <td><%= @stats["minutes"] %></td>
+              <td><%= @stats["fgm"] %></td>
+              <td><%= @stats["fga"] %></td>
+              <td><%= @stats["fgp"] %>%</td>
+              <td><%= @stats["threepm"] %></td>
+              <td><%= @stats["threepa"] %></td>
+              <td><%= @stats["threepp"] %>%</td>
+              <td><%= @stats["ftm"] %></td>
+              <td><%= @stats["fta"] %></td>
+              <td><%= @stats["ftp"] %>%</td>
+              <td><%= @stats["offensive_reb"] %></td>
+              <td><%= @stats["defensive_reb"] %></td>
+              <td><%= @stats["total_reb"] %></td>
+              <td><%= @stats["assists"] %></td>
+              <td><%= @stats["steals"] %></td>
+              <td><%= @stats["block"] %></td>
+              <td><%= @stats["turnovers"] %></td>
+              <td><%= @stats["pfs"] %></td>
+              <td><%= @stats["points"] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </thead>
+    </table>
+  </section>
+
+  <section>
+    <div>
+      <h3 class="ui header">Game Notes</h3>
+    </div>
+
+    <div>
+      <p><%= @stats["game_notes"] %></p>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h3 class="ui header">Player Tendencies during <%= @game.title %></h3>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <p><%= @stats["player_tendencies"] %></p>
+    </div>
+  </section>
+</div>

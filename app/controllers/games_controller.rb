@@ -12,6 +12,19 @@ class GamesController < ApplicationController
     end
   end
 
+  def game_view
+    redirect_to_route_if_not_logged_in(route = 'login')
+    @user = current_user
+
+    if @user != nil
+      not_allowed_access?
+
+      @game = Game.find_by(id: params[:id])
+      @stats = Stat.find_by(game_id: @game.id)
+
+    end
+  end
+
   def confirmation
     redirect_to_route_if_not_logged_in(route = 'login')
 

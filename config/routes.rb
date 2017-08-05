@@ -34,8 +34,9 @@ Rails.application.routes.draw do
   patch '/complete-practice-review', to: 'practice_sessions#complete_review'
   get '/admin/complete-practice-review/confirmed', to: 'practice_sessions#confirm_complete_review'
 
-  # game confirmation page and show pages
+  # game confirmation page, show pages and member review pages
   get '/games/member/:username', to: 'games#index'
+  get '/games/member/:username/:id', to: 'games#game_view'
   get '/game/confirmation', to: 'games#confirmation'
   get '/admin/game/:id/show', to: 'games#show'
   get '/admin/game/:id/show/admin-review', to: 'games#admin_review'

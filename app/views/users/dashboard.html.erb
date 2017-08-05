@@ -11,7 +11,7 @@
 
   <section class="dashboard-middle">
     <div>
-      <h3 class="ui header">Your Previously Reviewed Games</h3>
+      <h3 class="ui header">Your Most Recent Reviewed Games</h3>
     </div>
     <table class="ui striped table">
       <thead>
@@ -30,7 +30,7 @@
                 <td><%= game.title %></td>
                 <td><%= game.date %></td>
                 <td><%= game.team_name %></td>
-                <td><a href="#" type="button" class="ui button green">See Game Review</a></td>
+                <td><a href="/games/member/<%= current_user.username %>/<%= game.id %>" type="button" class="ui button green">See Game Review</a></td>
               </tr>
             <% end %>
           <% end %>
