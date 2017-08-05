@@ -73,6 +73,7 @@ class UsersController < ApplicationController
       redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
     end
 
+    raise
     # new user instance for errors
     @user = User.new
   end

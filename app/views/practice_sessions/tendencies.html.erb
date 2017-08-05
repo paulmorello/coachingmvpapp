@@ -1,5 +1,5 @@
 <div class="eight wide column">
-  <h2>Coaching reviews and overall player tendencies will go here</h2>
+  <h2>Reviewed Practice Sessions</h2>
 
   <section>
     <table class="ui striped table">
@@ -13,7 +13,8 @@
         <tbody>
           <% if @previous_practices.empty? %>
             <tr>
-              <p>Submit your first practice for review</p>
+              <td>Submit your first practice for review</td>
+              <td><a href="/practice_sessions/new" type="button" class="ui button green">Upload Practice Session</a></td>
             </tr>
           <% else %>
             <% @previous_practices.each do |psession| %>

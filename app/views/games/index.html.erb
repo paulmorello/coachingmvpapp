@@ -1,7 +1,7 @@
 <div class="eight wide column">
   <section class="games-header">
     <div class="games-heading">
-      <h2 class="ui header">Your Previously Reviewed Games</h3>
+      <h2 class="ui header">Reviewed Game Footage</h3>
     </div>
   </section>
 
@@ -17,7 +17,10 @@
         </tr>
         <tbody>
           <% if @previous_games.empty? %>
+            <tr>
               <td>No Previous Games Reviewed</td>
+              <td><a href="/games/new" type="button" class="ui button green">Upload Game Footage</a></td>
+            </tr>
           <% else %>
             <% @previous_games.each do |game| %>
               <tr>
