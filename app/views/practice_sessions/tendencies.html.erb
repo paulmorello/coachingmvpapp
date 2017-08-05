@@ -20,13 +20,13 @@
               <td><a href="/practice_sessions/new" type="button" class="ui button green">Upload Practice Session</a></td>
             </tr>
           <% else %>
-            <% @previous_practices.each do |psession| %>
-              <% user = User.find_by(id: psession.user_id) %>
+            <% @previous_practices.each do |practice| %>
+              <% user = User.find_by(id: practice.user_id) %>
               <tr>
                 <td><%= user.first_name %> <%= user.last_name %></td>
                 <td><%= user.username %></td>
-                <td><%= psession.created_at %></td>
-                <td><a href="#" type="button" class="ui button green">Review</a></td>
+                <td><%= practice.created_at %></td>
+                <td><a href="/tendencies/member/<%= user.username %>/<%= practice.id %>" type="button" class="ui button green">See Practice Review</a></td>
               </tr>
             <% end %>
           <% end %>

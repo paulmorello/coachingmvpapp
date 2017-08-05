@@ -1,0 +1,23 @@
+<div class="eleven wide column practice-view-main">
+  <section class="practice-header">
+    <h2 class="ui header"><%= @practice.title %></h2>
+    <h4>Practice Date: <%= @practice.date %></h4>
+    <div>
+      <h3>Your Future Focus: <%= @practice.focus %></h3>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h3 class="ui header">Strengths & Improvements</h3>
+      <p><%= @practice.additional_notes %></p>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h3 class="ui header">Practice Notes</h3>
+      <p><%= @practice.pratice_notes %></p>
+    </div>
+  </section>
+</div>

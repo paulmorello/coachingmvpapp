@@ -6,10 +6,22 @@ class PracticeSessionsController < ApplicationController
 
     if @user != nil
       not_allowed_access?
-      
+
 
       # Finding past reviewed games
       @previous_practices = PracticeSession.where("needs_review = ? AND user_id = ?", false, @user.id)
+    end
+  end
+
+  def practice_view
+    redirect_to_route_if_not_logged_in(route = 'login')
+    @user = current_user
+
+    if @user != nil
+      not_allowed_access?
+
+      @practice = PracticeSession.find_by(user_id: @user.id)
+
     end
   end
 
@@ -76,6 +88,7 @@ class PracticeSessionsController < ApplicationController
 
     @practice = PracticeSession.find_by(id: params[:id])
     @user = User.find_by(id: @practice.user_id)
+
   end
 
   def complete_review
