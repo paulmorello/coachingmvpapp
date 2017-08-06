@@ -2,7 +2,7 @@
 <div class="three wide column">
   <div class="ui vertical pointing menu">
     <a class="item" href="/dashboard/<%= current_user.username %>">Dashboard <i class="dashboard icon"></i></a>
-    <a class="item" href="/games/member/<%= current_user.username %>">Games Reviews <i class="trophy icon"></i></a>
+    <a class="item" href="/games/member/<%= current_user.username %>">Game Reviews <i class="trophy icon"></i></a>
     <a class="item" href="/tendencies/<%= current_user.username %>">Practice Reviews <i class="bar chart icon"></i></a>
     <a class="item" href="/stats/member/<%= current_user.username %>">Stats <i class="pie chart icon"></i></a>
     <%= form_tag("/logout", method: "delete") do %>
