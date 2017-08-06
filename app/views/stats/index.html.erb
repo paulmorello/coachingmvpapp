@@ -1,3 +1,131 @@
 <div class="eight wide column">
-  <h2>Main page for season stats for members</h2>
+  <div class="dashboard-header-left">
+    <h2>Your Stats</h2>
+  </div>
+
+  <section>
+    <%= line_chart @stats.group_by_day(:created_at).sum(:points) %>
+  </section>
+
+  <section class="stats-top">
+    <div>
+      <h3 class="ui header">Your Season Averages</h3>
+    </div>
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>GS</th>
+          <th>Mins</th>
+          <th>FGM</th>
+          <th>FGA</th>
+          <th>FGP</th>
+          <th>3PM</th>
+          <th>3PA</th>
+          <th>3PP</th>
+          <th>FTM</th>
+          <th>FTA</th>
+          <th>FTP</th>
+          <th>ORB</th>
+          <th>DRB</th>
+          <th>TRB</th>
+          <th>AST</th>
+          <th>STL</th>
+          <th>BLK</th>
+          <th>TO</th>
+          <th>PF</th>
+          <th>PTS</th>
+        </tr>
+        <tbody>
+          <% if @averages.empty? %>
+            <td>No Previous Games Reviewed</td>
+          <% else %>
+            <tr>
+              <td><%= @averages["gs"] %></td>
+              <td><%= @averages["mins"] %></td>
+              <td><%= @averages["fgm"] %></td>
+              <td><%= @averages["fga"] %></td>
+              <td><%= @averages["fgp"] %>%</td>
+              <td><%= @averages["threepm"] %></td>
+              <td><%= @averages["threepa"] %></td>
+              <td><%= @averages["threepp"] %>%</td>
+              <td><%= @averages["ftm"] %></td>
+              <td><%= @averages["fta"] %></td>
+              <td><%= @averages["ftp"] %>%</td>
+              <td><%= @averages["orb"] %></td>
+              <td><%= @averages["drb"] %></td>
+              <td><%= @averages["trb"] %></td>
+              <td><%= @averages["ast"] %></td>
+              <td><%= @averages["stl"] %></td>
+              <td><%= @averages["blk"] %></td>
+              <td><%= @averages["to"] %></td>
+              <td><%= @averages["pfs"] %></td>
+              <td><%= @averages["pts"] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </thead>
+    </table>
+  </section>
+
+  <section class="stats-middle">
+    <div>
+      <h3 class="ui header">Game Stats</h3>
+    </div>
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>GS</th>
+          <th>Mins</th>
+          <th>FGM</th>
+          <th>FGA</th>
+          <th>FGP</th>
+          <th>3PM</th>
+          <th>3PA</th>
+          <th>3PP</th>
+          <th>FTM</th>
+          <th>FTA</th>
+          <th>FTP</th>
+          <th>ORB</th>
+          <th>DRB</th>
+          <th>TRB</th>
+          <th>AST</th>
+          <th>STL</th>
+          <th>BLK</th>
+          <th>TO</th>
+          <th>PF</th>
+          <th>PTS</th>
+        </tr>
+        <tbody>
+          <% if !@stats %>
+            <td>There is an error retrieving your stats.</td>
+          <% else %>
+            <% @stats.each do |stat| %>
+              <tr>
+                <td><%= stat["game_started"] ? "1" : "0"%></td>
+                <td><%= stat["minutes"] %></td>
+                <td><%= stat["fgm"] %></td>
+                <td><%= stat["fga"] %></td>
+                <td><%= stat["fgp"] %>%</td>
+                <td><%= stat["threepm"] %></td>
+                <td><%= stat["threepa"] %></td>
+                <td><%= stat["threepp"] %>%</td>
+                <td><%= stat["ftm"] %></td>
+                <td><%= stat["fta"] %></td>
+                <td><%= stat["ftp"] %>%</td>
+                <td><%= stat["offensive_reb"] %></td>
+                <td><%= stat["defensive_reb"] %></td>
+                <td><%= stat["total_reb"] %></td>
+                <td><%= stat["assists"] %></td>
+                <td><%= stat["steals"] %></td>
+                <td><%= stat["block"] %></td>
+                <td><%= stat["turnovers"] %></td>
+                <td><%= stat["pfs"] %></td>
+                <td><%= stat["points"] %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </thead>
+    </table>
+  </section>
 </div>
