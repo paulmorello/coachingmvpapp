@@ -4,6 +4,7 @@
   </div>
 
   <section>
+    <h3>Your points per game</h3>
     <%= line_chart @stats.group_by_day(:created_at).sum(:points) %>
   </section>
 
