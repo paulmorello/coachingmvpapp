@@ -1,0 +1,194 @@
+.home-hero-landing {
+  background-color: lightgray;
+  padding: 1.5em;
+}
+
+.create-acc-link {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 1.6em;
+  text-decoration: none;
+
+  font-size: 1.2em;
+
+  border-radius: 2px;
+  padding: 5px;
+
+}
+
+.home-header a:hover {
+
+  color: black;
+}
+
+.home-top-bottom {
+  text-align: center;
+  margin: 1.5em;
+}
+
+.home-top-bottom a {
+  text-decoration: none;
+
+  font-size: 1.5em;
+
+  border-radius: 2px;
+  padding: 0 10px;
+}
+
+.home-top-bottom a:first-child {
+
+  color: black;
+  padding: 0 20px;
+}
+
+.home-top-bottom a:hover {
+
+  color: black;
+}
+
+.home-middle {
+  width: 100%;
+
+  display: inline-block;
+}
+.js-logo {
+  width: 31%;
+  display: inline-block;
+  text-align: center;
+}
+.js-heading {
+  margin-bottom: -10px;
+}
+.home-middle-left h5 {
+  font-weight: bold;
+  font-size: 1.2em
+}
+
+// .js-logo img {
+//   width: 80%
+// }
+
+.ruby-logo {
+  width: 31%;
+  display: inline-block;
+  text-align: center;
+  height: 100px;
+  vertical-align: center;
+}
+.ruby-heading {
+  display: block;
+  vertical-align: bottom;
+  margin-bottom: -4px;
+
+}
+.ruby-logo img {
+  margin-top: 30px;
+}
+
+.other-logo {
+  width: 32%;
+  display: inline-block;
+  text-align: center;
+}
+.other-heading {
+  margin-bottom: -4px;
+}
+
+.home-middle-left {
+  display: inline-block;
+  vertical-align: middle;
+  width: 48%;
+  padding: 2%;
+}
+
+.home-middle-right {
+  text-align: center;
+
+}
+
+.home-middle-left img {
+  width: 80%;
+  margin: 2%;
+}
+.home-middle-right h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.home-middle-left p {
+  padding: 2em;
+  padding-top: 1em;
+  font-size: 1.1em;
+}
+
+footer {
+  text-align: center;
+  background-color: #D9D9D9;
+  font-size: 2em;
+  padding: 1em;
+}
+
+footer h2 {
+  color: #276DC2;
+  padding-bottom: 1em;
+}
+
+footer a {
+  text-decoration: none;
+
+  padding: 0px 20px;
+}
+
+footer a:hover {
+
+  text-decoration: none;
+}
+
+@media (max-width: 650px) {
+
+  .home-header a {
+    visibility: hidden;
+  }
+
+  .home-top-center h2 {
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 1.5em;
+  }
+
+  .home-top-center img {
+    display: block;
+    width: 100%;
+  }
+
+  .home-middle-right {
+    display: block;
+    width: 100%;
+  }
+
+  .home-middle-left {
+    display: block;
+    width: 100%;
+  }
+
+  .home-middle-left img {
+    width: 100%;
+  }
+
+  .js-logo {
+    width: 30%;
+
+    // img {
+    //   width: 150px;
+    //   height: 150px;
+    // }
+  }
+  .ruby-logo {
+    width: 30%;
+  }
+  .other-logo {
+    width: 32%;
+  }
+}

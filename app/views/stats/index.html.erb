@@ -8,14 +8,6 @@
       <%= area_chart @chart_query %>
     </div>
     <div class="stats-areachart-bottom">
-      <!-- <%= form_tag '#', class: 'ui form', method: 'post' do%>
-        <div class="fields">
-          <div class="four wide field">
-            <label>Choose Stat to Sort By</label>
-            <input type="text" name="sort_by">
-          </div>
-        </div>
-      <% end %> -->
       <%= form_tag "/stats/member/#{@user.username}", class: 'ui form', method: 'get' do %>
         <div class="fields">
           <div class="field">
