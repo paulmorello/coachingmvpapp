@@ -76,7 +76,34 @@
     }
 
     .home-hero-cta {
+      width: 100%;
+      height: 10%;
+    }
+  }
 
+  // Begin styling for feature section of home page
+  .home-main-feature {
+    width: 100%;
+    height: 90%;
+
+    .row.home-main-feature-breakdown {
+      width: 100%;
+      height: 100vh;
+
+      .home-main-feature-image {
+        padding: 20% 0;
+      }
+
+      .home-main-feature-list {
+        padding: 20% 0;
+
+        ul {
+
+          li {
+            list-style: none;
+          }
+        }
+      }
     }
   }
 }
