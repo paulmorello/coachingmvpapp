@@ -84,23 +84,77 @@
   // Begin styling for feature section of home page
   .home-main-feature {
     width: 100%;
-    height: 90%;
+    height: 100%;
 
     .row.home-main-feature-breakdown {
       width: 100%;
-      height: 100vh;
+      height: 84%;
+      padding: 8% 0;
 
-      .home-main-feature-image {
-        padding: 20% 0;
+      .home-main-feature-image.eight.wide.column {
+        width: 100%;
+        height: 100%;
+
+        img {
+
+        }
       }
 
       .home-main-feature-list {
-        padding: 20% 0;
+        width: 40%;
+
+        ul {
+          width: 90%;
+
+          li {
+            margin: 20px 0;
+            line-height: 1.5em;
+            list-style-type: square;
+          }
+        }
+      }
+
+      .home-main-feature-list-cta {
+
+        a {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  // Begin Styling for header and Navbar
+  footer {
+    width: 100%;
+
+    .footer-menu {
+      width: 90%;
+      margin: 0 auto;
+
+      .footer-menu-left {
+        width: 20%;
+        display: inline-block;
+        text-align: left;
+
+        span {
+          padding-left: 1.5em;
+        }
+      }
+
+      .footer-menu-right {
+        width: 75%;
+        display: inline-block;
+        text-align: right;
 
         ul {
 
           li {
             list-style: none;
+            display: inline-block;
+
+            a {
+              text-decoration: none;
+            }
           }
         }
       }
