@@ -46,25 +46,27 @@ class UsersController < ApplicationController
         @averages["pts"] = @averages["pts"].to_f + stat.points
       end
 
-      @averages["mins"] = @averages["mins"]/@stats.count
-      @averages["fgm"] = (@averages["fgm"]/@stats.count).round(1)
-      @averages["fga"] = (@averages["fga"]/@stats.count).round(1)
-      @averages["fgp"] = @averages["fgp"]/@stats.count
-      @averages["threepm"] = (@averages["threepm"]/@stats.count).round(1)
-      @averages["threepa"] = (@averages["threepa"]/@stats.count).round(1)
-      @averages["threepp"] = @averages["threepp"]/@stats.count
-      @averages["ftm"] = (@averages["ftm"]/@stats.count).round(1)
-      @averages["fta"] = (@averages["fta"]/@stats.count).round(1)
-      @averages["ftp"] = (@averages["ftp"]/@stats.count).round(1)
-      @averages["orb"] = (@averages["orb"]/@stats.count).round(1)
-      @averages["drb"] = (@averages["drb"]/@stats.count).round(1)
-      @averages["trb"] = (@averages["trb"]/@stats.count).round(1)
-      @averages["ast"] = (@averages["ast"]/@stats.count).round(1)
-      @averages["stl"] = (@averages["stl"]/@stats.count).round(1)
-      @averages["blk"] = (@averages["blk"]/@stats.count).round(1)
-      @averages["to"] = (@averages["to"]/@stats.count).round(1)
-      @averages["pfs"] = (@averages["pfs"]/@stats.count).round(1)
-      @averages["pts"] = (@averages["pts"]/@stats.count).round(1)
+      if !@averages.empty?
+        @averages["mins"] = @averages["mins"]/@stats.count
+        @averages["fgm"] = (@averages["fgm"]/@stats.count).round(1)
+        @averages["fga"] = (@averages["fga"]/@stats.count).round(1)
+        @averages["fgp"] = @averages["fgp"]/@stats.count
+        @averages["threepm"] = (@averages["threepm"]/@stats.count).round(1)
+        @averages["threepa"] = (@averages["threepa"]/@stats.count).round(1)
+        @averages["threepp"] = @averages["threepp"]/@stats.count
+        @averages["ftm"] = (@averages["ftm"]/@stats.count).round(1)
+        @averages["fta"] = (@averages["fta"]/@stats.count).round(1)
+        @averages["ftp"] = (@averages["ftp"]/@stats.count).round(1)
+        @averages["orb"] = (@averages["orb"]/@stats.count).round(1)
+        @averages["drb"] = (@averages["drb"]/@stats.count).round(1)
+        @averages["trb"] = (@averages["trb"]/@stats.count).round(1)
+        @averages["ast"] = (@averages["ast"]/@stats.count).round(1)
+        @averages["stl"] = (@averages["stl"]/@stats.count).round(1)
+        @averages["blk"] = (@averages["blk"]/@stats.count).round(1)
+        @averages["to"] = (@averages["to"]/@stats.count).round(1)
+        @averages["pfs"] = (@averages["pfs"]/@stats.count).round(1)
+        @averages["pts"] = (@averages["pts"]/@stats.count).round(1)
+      end
 
     end
   end
@@ -74,7 +76,15 @@ class UsersController < ApplicationController
       redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
     end
 
-    raise
+    # new user instance for errors
+    @user = User.new
+  end
+
+  def trial_signup
+    if logged_in?
+      redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
+    end
+
     # new user instance for errors
     @user = User.new
   end
@@ -155,6 +165,9 @@ class UsersController < ApplicationController
   end
 
   def confirm_payment
+  end
+
+  def confirm_trial
   end
 
   def cancel_account

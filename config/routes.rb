@@ -18,12 +18,18 @@ Rails.application.routes.draw do
   get '/admin/game-reviews', to: 'users#game_reviews'
   get '/admin/practice-reviews', to: 'users#practice_reviews'
 
+  # Trial sign up form
+  get '/trial-signup', to: 'users#trial_signup'
+
   # Update payment information and cancel account routes
   get '/users/:username/update-payment', to: 'users#update_payment'
   get '/users/:username/cancel-account', to: 'users#cancel_account'
+  patch '/admin/admin-access', to: 'users#admin_access'
+
+  # confirmation pages
   get '/confirmation/delete-account', to: 'users#delete_account'
   get '/confirmation/payment-confirmed', to: 'users#confirm_payment'
-  patch '/admin/admin-access', to: 'users#admin_access'
+  get '/confirmation/trial-confirmed', to: 'users#confirm_trial'
 
   # practice sessions main page will join player tendencies
   get '/tendencies/:username', to: 'practice_sessions#tendencies'

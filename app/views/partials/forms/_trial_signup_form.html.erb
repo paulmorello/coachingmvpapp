@@ -1,0 +1,47 @@
+<%= form_tag '/users', class: 'ui form error', method: 'post' do%>
+
+  <!-- display form errors -->
+  <% if @user.errors.any? %>
+    <div class="ui error message">
+      <div class="header">Form Errors</div>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+    </div>
+  <% end %>
+
+  <h3>2. Basic Information</h3>
+  <div class="fields">
+    <div class="field">
+      <label>First name</label>
+      <input type="text" name="first_name" placeholder="First Name">
+    </div>
+    <div class="field">
+      <label>Last name</label>
+      <input type="text" name="last_name" placeholder="Last Name">
+    </div>
+  </div>
+  <div class="field">
+    <label>Username</label>
+    <input type="text" name="username" placeholder="Enter Username">
+  </div>
+  <div class="field">
+    <label>Team Name</label>
+    <input type="text" name="team_name" placeholder="Enter Your Team's Name">
+  </div>
+
+  <h3>3. Account Information</h3>
+  <div class="fields">
+    <div class="field">
+      <label>Email Address</label>
+      <input type="email" name="email" placeholder="Email Address">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Password">
+    </div>
+  </div>
+
+  <button class="ui button green" type="submit">Join</button>
+
+<% end %>
