@@ -96,12 +96,12 @@
         height: 100%;
 
         img {
-
+          padding: 0% 0% 0% 0%;
         }
       }
 
       .home-main-feature-list {
-        width: 40%;
+        width: 30%;
 
         ul {
           width: 90%;
@@ -126,6 +126,7 @@
   // Begin Styling for header and Navbar
   footer {
     width: 100%;
+    background-color: #F2F0EE;
 
     .footer-menu {
       width: 90%;
@@ -151,9 +152,24 @@
           li {
             list-style: none;
             display: inline-block;
+            font-size: 1.2em;
+            margin: 0 2.5px;
 
             a {
               text-decoration: none;
+              color: #8D8C8D;
+
+              .twitter:hover {
+                color: #58CFD9;
+              }
+
+              .youtube:hover {
+                color: #B00E16;
+              }
+            }
+
+            .footer-menu-right-link:hover {
+              color: #10A400;
             }
           }
         }
