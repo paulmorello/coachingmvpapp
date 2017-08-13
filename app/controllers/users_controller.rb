@@ -211,6 +211,12 @@ class UsersController < ApplicationController
       is_not_admin?(route = "dashboard/#{current_user.username}")
     end
 
+    if params[:user_search]
+      user = params[:user_search].downcase
+      @search_user = User.find_by(email: user)
+      @search_game_count = Game.where("needs_review = ? AND user_id = ?", true, @search_user.id).count
+    end
+
     @games = Game.where(needs_review: true).limit(10)
     @game_total = @games.count
 

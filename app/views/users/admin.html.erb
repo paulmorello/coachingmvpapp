@@ -17,6 +17,31 @@
     <% end %>
   </section>
 
+  <% if @search_user != nil %>
+    <section>
+      <table class="ui striped table">
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Pending Reviews</th>
+            <th></th>
+          </tr>
+          <tbody>
+            <tr>
+              <td><%= @search_user.id %></td>
+              <td><%= @search_user.first_name %> <%= @search_user.last_name %></td>
+              <td><%= @search_user.username %></td>
+              <td><%= @search_game_count %></td>
+            </tr>
+          </tbody>
+        </thead>
+      </table>
+
+    </section>
+  <% end %>
+
   <section>
     <h3>Games for Review</h3> <a href="/admin/game-reviews">See all games for review</a>
     <p>Total games currently needing review: <%= @game_total %></p>
