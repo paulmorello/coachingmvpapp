@@ -45,7 +45,7 @@
               <a class="item">Hi <%= current_user.first_name %></a>
               <a class="item" href="/users/<%= current_user.username %>">Account Details</a>
               <%= form_tag("/logout", method: "delete") do %>
-                <button class="ui button blue">Sign Out</button>
+                <button class="ui basic button">Sign Out</button>
               <% end %>
             </div>
           </div>
