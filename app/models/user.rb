@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :videos, dependent: :destroy
   has_many :stats, dependent: :destroy
 
+  # carrierwave uploader for avatars
+  mount_uploader :new_avatar, ProfileUploader
+
   # Validation constraints
   validates :email, :username, presence: true
   validates :email, uniqueness: true

@@ -33,7 +33,14 @@
           <a class="item" href="/practice_sessions/new">Upload Practice Session</a>
           <a class="item" href="/games/new">Upload Game Footage</a>
           <div class="ui dropdown item">
-            <img class="ui avatar mini image" src="<%= current_user.avatar %>"><span> <%= current_user.username %> <i class="dropdown icon"></i></span> 
+
+            <!-- Check if user has uploaded an avatar else show default -->
+            <% if current_user.new_avatar.model["new_avatar"] == nil %>
+              <img class="ui avatar mini image" src="<%= current_user.avatar %>"><span> <%= current_user.username %> <i class="dropdown icon"></i></span>
+            <% else %>
+              <img class="ui avatar mini image" src="<%= current_user.new_avatar %>"><span> <%= current_user.username %> <i class="dropdown icon"></i></span>
+            <% end %>
+
             <div class="menu">
               <a class="item">Hi <%= current_user.first_name %></a>
               <a class="item" href="/users/<%= current_user.username %>">Account Details</a>

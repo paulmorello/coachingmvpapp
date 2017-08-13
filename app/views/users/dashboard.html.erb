@@ -2,8 +2,16 @@
 <div class="eleven wide column dashboard-main">
   <section class="dashboard-header">
     <div class="dashboard-header-left">
-      <img class="dashboard-image" src="<%= @user.avatar %>" alt="">
+
+      <!-- Check if user has uploaded an avatar else show default -->
+      <% if current_user.new_avatar.model["new_avatar"] == nil %>
+        <img class="dashboard-image" src="<%= @user.avatar %>" alt="">
+      <% else %>
+        <img class="dashboard-image" src="<%= @user.new_avatar %>" alt="">
+      <% end %>
+      
     </div>
+
     <div class="dashboard-header-right">
       <h2 class="ui header">Dashboard for <%= @user.first_name %> <%= @user.last_name %></h2>
     </div>

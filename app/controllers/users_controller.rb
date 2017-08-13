@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     @user.username = params[:username]
     @user.email = params[:email]
     @user.password = params[:password]
-    @user.avatar = "/assets/avatar.svg"
+    @user.avatar = '/assets/default-avatar.svg'
     @user.admin = false
     @user.subscription = 'trial'
 
@@ -141,6 +141,7 @@ class UsersController < ApplicationController
     @user.last_name = params[:last_name]
     @user.username = params[:username_new]
     @user.email = params[:email]
+    @user.new_avatar = params[:new_avatar]
 
     # Check if username field is empty
     if params[:password] != ''
