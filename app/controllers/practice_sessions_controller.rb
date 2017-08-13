@@ -50,13 +50,15 @@ class PracticeSessionsController < ApplicationController
     @practice.user_id = current_user.id
     @practice.title = params[:practice_title]
     @practice.date = params[:practice_date]
+    @practice.practice_session_url = params[:video_url]
     @practice.needs_review = true
 
-    if params[:video_file] != ""
-      @practice.practice_session_url = params[:video_file]
-    else
-      @practice.practice_session_url = params[:video_url]
-    end
+    # Allow for larger video uploads in the future but
+    # for now files would be too big to upload and cost too much to store
+
+    # if params[:video_file] != ""
+    #   @practice.practice_session_url = params[:video_file]
+    # end
 
     if @practice.save
       redirect_to '/practice/confirmation'

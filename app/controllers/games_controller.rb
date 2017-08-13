@@ -82,18 +82,21 @@ class GamesController < ApplicationController
     @game.team_score = params[:team_score]
     @game.opponent_score = params[:opponent_score]
     @game.player_number = params[:player_number]
+    @game.game_url = params[:video_url]
     @game.needs_review = true
 
-    # checking if youtube or file upload
-    if params[:video_file] != ""
-      @game.game_url = params[:video_file]
-    else
-      @game.game_url = params[:video_url]
-    end
+    # Allow for larger video uploads in the future but
+    # for now files would be too big to upload and cost too much to store
+
+    # if params[:video_file] != ""
+    #   @game.game_url = params[:video_file]
+    # end
 
     if @game.save
+
       redirect_to '/game/confirmation'
     else
+
       render :new
     end
 

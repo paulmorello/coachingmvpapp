@@ -2,7 +2,7 @@
 
   <h2>Game Footage Upload Form</h2>
 
-  <%= form_tag '/games', class: 'ui form error', method: 'post' do%>
+  <%= form_tag '/games', class: 'ui form error', method: 'post', enctype: 'multipart/form-data' do%>
 
     <!-- display form errors -->
     <% if @game.errors.any? %>
@@ -46,13 +46,6 @@
     </div>
 
     <div class="field">
-      <label>Video Upload</label>
-      <input type="file" name="video_file" placeholder="Browse">
-    </div>
-
-    <h3>OR</h3>
-
-    <div class="field">
       <label>Youtube Video Upload</label>
       <input type="text" name="video_url" placeholder="Enter youtube video link">
     </div>
@@ -62,6 +55,19 @@
   <% end %>
 
 </div>
+
+<!--
+Will allow users to upload video directly, but at the
+current time the loading times and cost to store long
+videos would be too high
+
+<div class="field">
+  <label>Video Upload</label>
+  <input type="file" name="video_file" placeholder="Browse">
+</div>
+
+<h3>OR</h3>
+-->
 
 <div>
   <%= @errors %>

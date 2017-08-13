@@ -23,4 +23,6 @@ class Game < ApplicationRecord
       self.team_name = team_name.downcase.titleize
       self.opponent_name = opponent_name.downcase.titleize
     end
+
+
 end
