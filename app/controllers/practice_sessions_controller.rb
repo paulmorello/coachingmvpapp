@@ -104,7 +104,7 @@ class PracticeSessionsController < ApplicationController
 
     # Update practice properties
     @practice.focus = params[:focus]
-    @practice.pratice_notes = params[:practice_notes]
+    @practice.practice_notes = params[:practice_notes]
     @practice.additional_notes = params[:additional_notes]
 
     if @user.save
