@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   include SessionHelper
   include RouteHelper
 
+  def auth_current_user
+    @auth_current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+  end
+
 end

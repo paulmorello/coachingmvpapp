@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :drills, :games, :stats, :practice_sessions, :videos
   resources :users, param: :username
+  resources :password_resets
 
   # session routes
   get '/login', to: 'session#new'
