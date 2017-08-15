@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   # Validation methods
   before_create { generate_token(:auth_token) }
+  before_save :email_to_lower_case
 
   # Validation constraints
   validates :email, :username, presence: true
@@ -47,5 +48,11 @@ class User < ApplicationRecord
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+
+  private
+
+    def email_to_lower_case
+      self.email = email.downcase
+    end
 
 end
