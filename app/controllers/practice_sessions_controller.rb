@@ -45,6 +45,17 @@ class PracticeSessionsController < ApplicationController
 
   def create
 
+    # check if user has reviews available
+    @user = current_user
+    if @user.video_reviews == 0
+      @error = 'You have no more reviews available'
+
+      redirect_to '/practice_session/new'
+    else
+      # reduce number of video reviews
+      @user.video_reviews -= 1
+    end
+
     # Create a new practice session
     @practice = PracticeSession.new
     @practice.user_id = current_user.id
@@ -61,7 +72,9 @@ class PracticeSessionsController < ApplicationController
     # end
 
     if @practice.save
-      redirect_to '/practice/confirmation'
+      if @user.save
+        redirect_to '/practice/confirmation'
+      end
     else
       render :new
     end
@@ -84,7 +97,7 @@ class PracticeSessionsController < ApplicationController
 
   def admin_review
     redirect_to_route_if_not_logged_in(route = 'login')
-    if logged_in
+    if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")
     end
 
@@ -119,7 +132,7 @@ class PracticeSessionsController < ApplicationController
 
   def confirm_complete_review
     redirect_to_route_if_not_logged_in(route = 'login')
-    if logged_in
+    if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")
     end
 

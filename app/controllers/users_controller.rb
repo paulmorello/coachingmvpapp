@@ -100,7 +100,15 @@ class UsersController < ApplicationController
     @user.password = params[:password]
     @user.avatar = '/assets/default-avatar.svg'
     @user.admin = false
-    @user.subscription = 'trial'
+
+    # check if user has signed up for a trial or pro subscription
+    if params[:subscription] == 'trial'
+      @user.subscription = 'trial'
+      @user.video_reviews = 2
+    else
+      @user.subscription = 'pro'
+      @user.video_reviews = 4
+    end
 
     if @user.save
       session[:user_id] = @user.id
@@ -258,6 +266,7 @@ class UsersController < ApplicationController
   end
 
   def practice_reviews
+
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")

@@ -79,7 +79,7 @@
 
           <!-- Rendering month dropdown list -->
           <%= render 'partials/forms/form_months' %>
-          
+
           <div class="field">
             <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year">
           </div>
@@ -90,6 +90,7 @@
     </div>
   </div>
 
+  <input type="hidden" name="subscription" value="pro">
   <button class="ui button green" type="submit">Join</button>
 
   <% end %>

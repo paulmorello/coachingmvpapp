@@ -72,6 +72,17 @@ class GamesController < ApplicationController
 
   def create
 
+    # check if user has reviews available
+    @user = current_user
+    if @user.video_reviews == 0
+      @error = 'You have no more reviews available'
+
+      redirect_to '/practice_session/new'
+    else
+      # reduce number of video reviews
+      @user.video_reviews -= 1
+    end
+
     # create new game review
     @game = Game.new
     @game.user_id = current_user.id
@@ -93,8 +104,9 @@ class GamesController < ApplicationController
     # end
 
     if @game.save
-
-      redirect_to '/game/confirmation'
+      if @user.save
+        redirect_to '/game/confirmation'
+      end
     else
 
       render :new
