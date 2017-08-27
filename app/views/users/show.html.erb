@@ -15,6 +15,12 @@
       <div>
         <h3>Email</h3><p><%= current_user.email %></p>
       </div>
+
+      <div>
+        <h3>Video Reviews remaining</h3>
+        <progress value="<%= current_user.video_reviews %>" max="2"></progress>
+        <p>You currently have <%= current_user.video_reviews %> remaining review for this month</p>
+      </div>
     </div>
 
     <div>
