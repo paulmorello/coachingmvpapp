@@ -100,6 +100,7 @@ class UsersController < ApplicationController
     @user.password = params[:password]
     @user.avatar = '/assets/default-avatar.svg'
     @user.admin = false
+    @user.next_billing_date = Time.now + 1.month
 
     # check if user has signed up for a trial or pro subscription
     if params[:subscription] == 'trial'

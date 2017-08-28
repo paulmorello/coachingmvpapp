@@ -18,6 +18,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# Scheduled task runner for subscriptions
+gem 'whenever', :require => false
 # Use for creating charts and graphs
 gem 'chartkick'
 # Use for advanced Active Record queries
