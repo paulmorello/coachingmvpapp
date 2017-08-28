@@ -1,0 +1,15 @@
+
+<!-- Show which statistic to show in header of stats page -->
+<% if @sort_by == 'points' || @sort_by == 'assists' || @sort_by == 'steals' || @sort_by == 'turnovers' %>
+  <h3><%= @sort_by.upcase %> Per Game</h3>
+<% elsif @sort_by == 'threepm' %>
+  <h3>3PT MADE Per Game</h3>
+<% elsif @sort_by == 'ftm' %>
+  <h3>FREE THROW MADE Per Game</h3>
+<% elsif @sort_by == 'total_reb' %>
+  <h3>TOTAL REBOUNDS Per Game</h3>
+<% elsif @sort_by == 'block' %>
+  <h3>BLOCKS Per Game</h3>
+<% elsif @sort_by == 'pfs' %>
+  <h3>FOULS Per Game</h3>
+<% end %>

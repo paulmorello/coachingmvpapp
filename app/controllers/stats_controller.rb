@@ -15,11 +15,13 @@ class StatsController < ApplicationController
       @stats = Stat.where("user_id = ?", @user.id)
 
       # Initial queries for stats chart
+      @sort_by = 'points'
       @first_query = Game.joins(:stat).where(stats: { user_id: @user.id })
       @chart_query = @first_query.group(:date).average(:points)
 
       if params[:sort_by]
-        @chart_query = @first_query.group(:date).average(params[:sort_by])
+        @sort_by = params[:sort_by]
+        @chart_query = @first_query.group(:date).average(@sort_by)
       end
 
       @averages = {}

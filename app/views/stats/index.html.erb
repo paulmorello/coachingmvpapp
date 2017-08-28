@@ -1,17 +1,38 @@
 <div class="eight wide column">
   <div class="stats-header">
     <h2>Your Stats</h2>
+    <!-- Selecting the correct stat to show -->
+    <%= render 'partials/forms/stat_sort_header' %>
   </div>
 
   <section class="stats-areachart">
     <div class="stats-areachart-top">
-      <%= area_chart @chart_query %>
+
+      <!-- Change max value of chart if user is looking at points -->
+      <% if @sort_by == 'points' %>
+        <%= line_chart @chart_query, max: 100 %>
+      <% elsif @sort_by == 'assists'%>
+        <%= line_chart @chart_query, max: 30 %>
+      <% else %>
+        <%= line_chart @chart_query, max: 15 %>
+      <% end %>
     </div>
+
     <div class="stats-areachart-bottom">
       <%= form_tag "/stats/member/#{@user.username}", class: 'ui form', method: 'get' do %>
         <div class="fields">
           <div class="field">
-            <%= text_field_tag :sort_by, params[:sort_by], class: "ui input", placeholder: "Filter by stat" %>
+            <select name="sort_by" placeholder="Filter By Stat" class="">
+              <option value="points">Points</option>
+              <option value="assists">Assists</option>
+              <option value="threepm">3pt Made</option>
+              <option value="ftm">Free Throw Made</option>
+              <option value="total_reb">Rebounds</option>
+              <option value="steals">Steals</option>
+              <option value="block">Blocks</option>
+              <option value="turnovers">Turnovers</option>
+              <option value="pfs">Fouls</option>
+            </select>
             <%= submit_tag "Sort By", class: "ui blue button submit-btn", :name => nil %>
           </div>
         </div>
