@@ -1,0 +1,38 @@
+
+<div class="ui tiny modal">
+  <div class="header">We would love your feedback</div>
+  <div class="content">
+    <p>We would really appreciate your feedback on our website and the idea.
+    We want to make it easier for people to improve their skills and track
+    their development in their chosen sport.
+
+    If you have any ideas for how we can improve, or if you some features you'd
+    love to see implemented, please email us at feedback@gmail.com</p>
+  </div>
+  <div class="actions">
+    <button class="ui cancel button green">Go Back</button>
+  </div>
+</div>
+
+<script>
+// Popup modal for feedback form
+$(document).ready(function() {
+
+  // check if the form exists
+  var modalInterval = setInterval(function() {
+    var feedbackModal = document.getElementsByClassName("ui tiny modal")[0];
+
+    if(feedbackModal !== undefined) {
+
+      var feedbackBtn = document.getElementsByClassName('feedback')[0];
+      feedbackBtn.addEventListener('click', function(event) {
+
+        $('.tiny.modal').modal('show');
+
+      });
+      clearInterval(modalInterval);
+    };
+  }, 1000);
+
+});
+</script>

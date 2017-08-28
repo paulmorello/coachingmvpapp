@@ -1,14 +1,36 @@
 <!-- Popup delete your account modal -->
-<div class="ui tiny modal">
-  <div class="header">Delete Your Account</div>
+
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="archive icon"></i>Delete Your Account
+  </div>
   <div class="content">
-    <p>Are you sure you would like to delete your account?</p>
-    <p>Your statistics and information will be lost.</p>
+    <p>Are you sure you would like to delete your account? All of your statistics and information will be lost.</p>
   </div>
   <div class="actions">
     <%= form_tag user_path, method: "delete" do %>
-      <button class="ui approve button red">DELETE</button>
+      <button class="ui red basic cancel inverted button">DELETE</button>
     <% end %>
-    <button class="ui cancel button green">Cancel</button>
+    <div class="ui cancel inverted button green">
+      <i class="checkmark icon"></i>
+      Cancel
+    </div>
   </div>
 </div>
+
+<script>
+// Popup modal for deleting account
+$(document).ready(function() {
+
+  // check if the form exists
+  if (document.location.pathname.endsWith("/cancel-account")) {
+
+    var deleteBtn = document.getElementById('delete-btn');
+    deleteBtn.addEventListener('click', function(event) {
+      $('.basic.modal').modal('show');
+    });
+
+  };
+
+});
+</script>
