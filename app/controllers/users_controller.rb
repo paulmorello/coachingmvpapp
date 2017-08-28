@@ -120,6 +120,7 @@ class UsersController < ApplicationController
       else
         sleep 3
           redirect_to '/confirmation/payment-confirmed'
+      end
     else
 
       render :new

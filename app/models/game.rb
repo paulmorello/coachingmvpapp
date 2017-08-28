@@ -9,7 +9,7 @@ class Game < ApplicationRecord
   validates :title, :date, :game_url, :team_name, :opponent_name, :team_score, :opponent_score, :player_number, presence: true
 
   validates :team_name, :opponent_name, length: {
-    in: 5..80
+    in: 3..80
   }
 
   validates :team_score, :opponent_score, :player_number, numericality: {

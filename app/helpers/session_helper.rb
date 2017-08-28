@@ -23,10 +23,10 @@ module SessionHelper
         cookies[:auth_token] = @user.auth_token
       end
       session[:user_id] = @user.id
-      redirect_to "/#{route}", :notice => "Logged in!"
+      redirect_to "/#{route}"
     else
       @error = 'Your Email or Password is not correct'
-
+      
       render :new
     end
 
