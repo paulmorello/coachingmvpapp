@@ -114,8 +114,12 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
 
-      sleep 3
-        redirect_to '/confirmation/payment-confirmed'
+      if params[:subscription] == 'trial'
+        sleep 3
+          redirect_to '/confirmation/trial-confirmed'
+      else
+        sleep 3
+          redirect_to '/confirmation/payment-confirmed'
     else
 
       render :new
