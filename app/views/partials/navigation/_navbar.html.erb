@@ -6,9 +6,9 @@
 
           <!-- Check if logged in and redirect to home page if not -->
           <% if logged_in? %>
-            <a href="/dashboard/<%= current_user.username %>">[LOGO Here]</a></div>
+            <a href="/dashboard/<%= current_user.username %>" class="logo">ProScout</a></div>
           <% else %>
-            <a href="/">[LOGO Here]</a></div>
+            <a href="/" class="logo">ProScout</a></div>
           <% end %>
 
         <!-- Menu for logged in users -->

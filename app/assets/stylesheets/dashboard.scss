@@ -1,3 +1,21 @@
+@import "fonts";
+@import "variables";
+
+// CSS for Nav Bar
+a.logo {
+  font-family: $logo-font;
+  text-decoration: none;
+  font-size: 1.3em;
+  color: $primary-color;
+}
+
+a.logo:hover {
+  color: $primary-color;
+}
+
+.ui.large.menu > .left.menu > div.item > a.logo {
+  color: $primary-color;
+}
 
 // CSS for main dashboard page
 .dashboard-main {
