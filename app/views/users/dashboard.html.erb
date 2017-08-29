@@ -18,37 +18,37 @@
   </section>
 
   <section class="dashboard-top">
-    <div>
-      <h3 class="ui header">Your Season Averages</h3>
-    </div>
-    <table class="ui striped table">
-      <thead>
-        <tr>
-          <th>GS</th>
-          <th>Mins</th>
-          <th>FGM</th>
-          <th>FGA</th>
-          <th>FGP</th>
-          <th>3PM</th>
-          <th>3PA</th>
-          <th>3PP</th>
-          <th>FTM</th>
-          <th>FTA</th>
-          <th>FTP</th>
-          <th>ORB</th>
-          <th>DRB</th>
-          <th>TRB</th>
-          <th>AST</th>
-          <th>STL</th>
-          <th>BLK</th>
-          <th>TO</th>
-          <th>PF</th>
-          <th>PTS</th>
-        </tr>
-        <tbody>
-          <% if @averages.empty? %>
-            <td>No Previous Games Reviewed</td>
-          <% else %>
+    <% if @averages.empty? %>
+      <h3>It's easy to get started. Upload game and practice footage to see your stats and get real feedback on your game.</h3>
+    <% else %>
+      <div>
+        <h3 class="ui header">Your Season Averages</h3>
+      </div>
+      <table class="ui striped table">
+        <thead>
+          <tr>
+            <th>GS</th>
+            <th>Mins</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>FGP</th>
+            <th>3PM</th>
+            <th>3PA</th>
+            <th>3PP</th>
+            <th>FTM</th>
+            <th>FTA</th>
+            <th>FTP</th>
+            <th>ORB</th>
+            <th>DRB</th>
+            <th>TRB</th>
+            <th>AST</th>
+            <th>STL</th>
+            <th>BLK</th>
+            <th>TO</th>
+            <th>PF</th>
+            <th>PTS</th>
+          </tr>
+          <tbody>
             <tr>
               <td><%= @averages["gs"] %></td>
               <td><%= @averages["mins"] %></td>
@@ -92,6 +92,7 @@
         <tbody>
           <% if @previous_games.empty? %>
               <td>No Previous Games Reviewed</td>
+              <td><a href="/games/new" type="button" class="ui button green">Upload Game Footage</a></td>
           <% else %>
             <% @previous_games.each do |game| %>
               <tr>

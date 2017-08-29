@@ -1,77 +1,78 @@
 <div class="eight wide column">
-  <div class="stats-header">
-    <h2>Your Stats</h2>
-    <!-- Selecting the correct stat to show -->
-    <%= render 'partials/forms/stat_sort_header' %>
-  </div>
-
-  <section class="stats-areachart">
-    <div class="stats-areachart-top">
-
-      <!-- Change max value of chart if user is looking at points -->
-      <% if @sort_by == 'points' %>
-        <%= line_chart @chart_query, max: 100 %>
-      <% elsif @sort_by == 'assists'%>
-        <%= line_chart @chart_query, max: 30 %>
-      <% else %>
-        <%= line_chart @chart_query, max: 15 %>
-      <% end %>
+  <% if @averages.empty? %>
+    <h3>Getting started is easy. Submit game footage for review and see you stats and averages here.</h3>
+    <a href="/games/new" type="button" class="ui button green">Upload Game Footage</a>
+  <% else %>
+    <div class="stats-header">
+      <h2>Your Stats</h2>
+      <!-- Selecting the correct stat to show -->
+      <%= render 'partials/forms/stat_sort_header' %>
     </div>
 
-    <div class="stats-areachart-bottom">
-      <%= form_tag "/stats/member/#{@user.username}", class: 'ui form', method: 'get' do %>
-        <div class="fields">
-          <div class="field">
-            <select name="sort_by" placeholder="Filter By Stat" class="">
-              <option value="points">Points</option>
-              <option value="assists">Assists</option>
-              <option value="threepm">3pt Made</option>
-              <option value="ftm">Free Throw Made</option>
-              <option value="total_reb">Rebounds</option>
-              <option value="steals">Steals</option>
-              <option value="block">Blocks</option>
-              <option value="turnovers">Turnovers</option>
-              <option value="pfs">Fouls</option>
-            </select>
-            <%= submit_tag "Sort By", class: "ui blue button submit-btn", :name => nil %>
+    <section class="stats-areachart">
+      <div class="stats-areachart-top">
+
+        <!-- Change max value of chart if user is looking at points -->
+        <% if @sort_by == 'points' %>
+          <%= line_chart @chart_query, max: 100 %>
+        <% elsif @sort_by == 'assists'%>
+          <%= line_chart @chart_query, max: 30 %>
+        <% else %>
+          <%= line_chart @chart_query, max: 15 %>
+        <% end %>
+      </div>
+
+      <div class="stats-areachart-bottom">
+        <%= form_tag "/stats/member/#{@user.username}", class: 'ui form', method: 'get' do %>
+          <div class="fields">
+            <div class="field">
+              <select name="sort_by" placeholder="Filter By Stat" class="">
+                <option value="points">Points</option>
+                <option value="assists">Assists</option>
+                <option value="threepm">3pt Made</option>
+                <option value="ftm">Free Throw Made</option>
+                <option value="total_reb">Rebounds</option>
+                <option value="steals">Steals</option>
+                <option value="block">Blocks</option>
+                <option value="turnovers">Turnovers</option>
+                <option value="pfs">Fouls</option>
+              </select>
+              <%= submit_tag "Sort By", class: "ui blue button submit-btn", :name => nil %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-  </section>
+        <% end %>
+      </div>
+    </section>
 
-  <section class="stats-top">
-    <div>
-      <h3 class="ui header">Your Season Averages</h3>
-    </div>
-    <table class="ui striped table">
-      <thead>
-        <tr>
-          <th>GS</th>
-          <th>Mins</th>
-          <th>FGM</th>
-          <th>FGA</th>
-          <th>FGP</th>
-          <th>3PM</th>
-          <th>3PA</th>
-          <th>3PP</th>
-          <th>FTM</th>
-          <th>FTA</th>
-          <th>FTP</th>
-          <th>ORB</th>
-          <th>DRB</th>
-          <th>TRB</th>
-          <th>AST</th>
-          <th>STL</th>
-          <th>BLK</th>
-          <th>TO</th>
-          <th>PF</th>
-          <th>PTS</th>
-        </tr>
-        <tbody>
-          <% if @averages.empty? %>
-            <td>No Previous Games Reviewed</td>
-          <% else %>
+    <section class="stats-top">
+      <div>
+        <h3 class="ui header">Your Season Averages</h3>
+      </div>
+      <table class="ui striped table">
+        <thead>
+          <tr>
+            <th>GS</th>
+            <th>Mins</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>FGP</th>
+            <th>3PM</th>
+            <th>3PA</th>
+            <th>3PP</th>
+            <th>FTM</th>
+            <th>FTA</th>
+            <th>FTP</th>
+            <th>ORB</th>
+            <th>DRB</th>
+            <th>TRB</th>
+            <th>AST</th>
+            <th>STL</th>
+            <th>BLK</th>
+            <th>TO</th>
+            <th>PF</th>
+            <th>PTS</th>
+          </tr>
+          <tbody>
             <tr>
               <td><%= @averages["gs"] %></td>
               <td><%= @averages["mins"] %></td>
@@ -94,71 +95,71 @@
               <td><%= @averages["pfs"] %></td>
               <td><%= @averages["pts"] %></td>
             </tr>
-          <% end %>
-        </tbody>
-      </thead>
-    </table>
-  </section>
+          </tbody>
+        </thead>
+      </table>
+    </section>
 
-  <section class="stats-middle">
-    <div>
-      <h3 class="ui header">Game Stats</h3>
-    </div>
-    <table class="ui striped table">
-      <thead>
-        <tr>
-          <th>GS</th>
-          <th>Mins</th>
-          <th>FGM</th>
-          <th>FGA</th>
-          <th>FGP</th>
-          <th>3PM</th>
-          <th>3PA</th>
-          <th>3PP</th>
-          <th>FTM</th>
-          <th>FTA</th>
-          <th>FTP</th>
-          <th>ORB</th>
-          <th>DRB</th>
-          <th>TRB</th>
-          <th>AST</th>
-          <th>STL</th>
-          <th>BLK</th>
-          <th>TO</th>
-          <th>PF</th>
-          <th>PTS</th>
-        </tr>
-        <tbody>
-          <% if !@stats %>
-            <td>There is an error retrieving your stats.</td>
-          <% else %>
-            <% @stats.each do |stat| %>
-              <tr>
-                <td><%= stat["game_started"] ? "1" : "0"%></td>
-                <td><%= stat["minutes"] %></td>
-                <td><%= stat["fgm"] %></td>
-                <td><%= stat["fga"] %></td>
-                <td><%= stat["fgp"] %>%</td>
-                <td><%= stat["threepm"] %></td>
-                <td><%= stat["threepa"] %></td>
-                <td><%= stat["threepp"] %>%</td>
-                <td><%= stat["ftm"] %></td>
-                <td><%= stat["fta"] %></td>
-                <td><%= stat["ftp"] %>%</td>
-                <td><%= stat["offensive_reb"] %></td>
-                <td><%= stat["defensive_reb"] %></td>
-                <td><%= stat["total_reb"] %></td>
-                <td><%= stat["assists"] %></td>
-                <td><%= stat["steals"] %></td>
-                <td><%= stat["block"] %></td>
-                <td><%= stat["turnovers"] %></td>
-                <td><%= stat["pfs"] %></td>
-                <td><%= stat["points"] %></td>
-              </tr>
+    <section class="stats-middle">
+      <div>
+        <h3 class="ui header">Game Stats</h3>
+      </div>
+      <table class="ui striped table">
+        <thead>
+          <tr>
+            <th>GS</th>
+            <th>Mins</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>FGP</th>
+            <th>3PM</th>
+            <th>3PA</th>
+            <th>3PP</th>
+            <th>FTM</th>
+            <th>FTA</th>
+            <th>FTP</th>
+            <th>ORB</th>
+            <th>DRB</th>
+            <th>TRB</th>
+            <th>AST</th>
+            <th>STL</th>
+            <th>BLK</th>
+            <th>TO</th>
+            <th>PF</th>
+            <th>PTS</th>
+          </tr>
+          <tbody>
+            <% if !@stats %>
+              <td>There is an error retrieving your stats.</td>
+            <% else %>
+              <% @stats.each do |stat| %>
+                <tr>
+                  <td><%= stat["game_started"] ? "1" : "0"%></td>
+                  <td><%= stat["minutes"] %></td>
+                  <td><%= stat["fgm"] %></td>
+                  <td><%= stat["fga"] %></td>
+                  <td><%= stat["fgp"] %>%</td>
+                  <td><%= stat["threepm"] %></td>
+                  <td><%= stat["threepa"] %></td>
+                  <td><%= stat["threepp"] %>%</td>
+                  <td><%= stat["ftm"] %></td>
+                  <td><%= stat["fta"] %></td>
+                  <td><%= stat["ftp"] %>%</td>
+                  <td><%= stat["offensive_reb"] %></td>
+                  <td><%= stat["defensive_reb"] %></td>
+                  <td><%= stat["total_reb"] %></td>
+                  <td><%= stat["assists"] %></td>
+                  <td><%= stat["steals"] %></td>
+                  <td><%= stat["block"] %></td>
+                  <td><%= stat["turnovers"] %></td>
+                  <td><%= stat["pfs"] %></td>
+                  <td><%= stat["points"] %></td>
+                </tr>
+              <% end %>
             <% end %>
-          <% end %>
-        </tbody>
-      </thead>
-    </table>
-  </section>
+          </tbody>
+        </thead>
+      </table>
+    </section>
+  <% end %>
 </div>
