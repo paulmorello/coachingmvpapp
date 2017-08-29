@@ -1,10 +1,8 @@
 class PasswordResetsController < ApplicationController
 
   def new
-    if !logged_in?
-      redirect_to_route_if_not_logged_in(route = '/login')
-    else
-      redirect_to_route_if_logged_in(route = "/dashboard/#{current_user.username}")
+    if logged_in?
+      redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
     end
 
   end
@@ -17,9 +15,9 @@ class PasswordResetsController < ApplicationController
 
   def edit
     if !logged_in?
-      redirect_to_route_if_not_logged_in(route = '/login')
+      redirect_to_route_if_not_logged_in(route = 'login')
     else
-      redirect_to_route_if_logged_in(route = "/dashboard/#{current_user.username}")
+      redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
     end
 
     @user = User.find_by_password_reset_token!(params[:id])
