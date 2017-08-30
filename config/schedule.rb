@@ -20,8 +20,8 @@
 # Learn more: http://github.com/javan/whenever
 set :output, 'log/whenever.log'
 
-# , :at => '12:00 am'
 
-every 1.minute do
+
+every 1.day, :at => '12:00 am' do
   rake "update_users:update_monthly_video_review_total"
 end
