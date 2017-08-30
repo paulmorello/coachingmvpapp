@@ -22,6 +22,6 @@ set :output, 'log/whenever.log'
 
 # , :at => '12:00 am'
 
-every 1.minutes do
+every 1.minute do
   rake "update_users:update_monthly_video_review_total"
 end
