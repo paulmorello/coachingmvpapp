@@ -5,9 +5,9 @@
 
       <!-- Check if user has uploaded an avatar else show default -->
       <% if current_user.new_avatar.model["new_avatar"] == nil %>
-        <img class="dashboard-image" src="<%= asset_path(@user.avatar) %>" alt="">
+        <img class="dashboard-image" src="<%= asset_path('@user.avatar') %>" alt="">
       <% else %>
-        <img class="dashboard-image" src="<%= asset_path(@user.new_avatar) %>" alt="">
+        <img class="dashboard-image" src="<%= asset_path('@user.new_avatar') %>" alt="">
       <% end %>
 
     </div>

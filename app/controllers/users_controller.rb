@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     @user.username = params[:username]
     @user.email = params[:email]
     @user.password = params[:password]
-    @user.avatar = '/assets/default-avatar.svg'
+    @user.avatar = 'default-avatar.svg'
     @user.admin = false
     @user.next_billing_date = Time.now + 1.month
 
