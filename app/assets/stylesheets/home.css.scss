@@ -52,17 +52,18 @@
   // Begin styling for slogan and main image area
   .home-hero-landing {
     width: 100%;
-    height: 90%;
+    height: 100%;
 
     .row.home-hero-main {
       width: 100%;
       height: 70%;
+      padding-top: 2.5%;
 
       .home-hero-slogan {
-        margin: 5% 0;
 
         h1 {
-          font-size: 4.5em;
+          font-size: 4em;
+          padding-top: .5em;
         }
 
         p {
@@ -96,9 +97,7 @@
       height: 84%;
       padding: 8% 0;
 
-      .home-main-feature-image.eight.wide.column {
-        width: 100%;
-        height: 100%;
+      .home-main-feature-image.six.wide.column {
 
         img {
           padding: 0% 0% 0% 0%;
@@ -125,10 +124,18 @@
           text-align: center;
         }
       }
+
+      .home-main-mobile-feature-list {
+        display: none;
+      }
+
+      .home-main-mobile-feature-list-cta {
+        display: none;
+      }
     }
   }
 
-  // Begin Styling for header and Navbar
+  // Begin Styling for footer
   footer {
     width: 100%;
     background-color: #F2F0EE;

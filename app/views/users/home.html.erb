@@ -17,27 +17,29 @@
     </div>
   </header>
 
-  <div class="home-hero-landing ui middle aligned fourteen column centered grid">
-    <div class="row home-hero-main">
-      <div class="home-hero-slogan seven wide column">
-        <h1>Track Your Player Development</h1>
+  <div class="home-hero-landing ui three column stackable grid container centered">
+    <div class="row home-hero-main column">
+      <div class="home-hero-slogan column">
+        <h1>Your Personal Scouting Profile.</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis aut assumenda unde dignissimos molestiae et doloribus excepturi odit quam molestias ad, laborum, minima dolorum quidem neque ullam voluptate optio adipisci.</p>
       </div>
 
-      <div class="home-hero-image six wide column">
+      <div class="one wide column"></div>
+
+      <div class="home-hero-image column">
         <img src="<%= asset_path("dashboard-image.png") %>" alt="">
       </div>
     </div>
-    <div class="row">
-      <div class="home-hero-cta five wide column">
+    <div class="row home-hero-cta">
+      <div class="home-hero-cta column">
         <a href="/trial-signup" class="ui fluid green button">Get Started For Free</a>
       </div>
     </div>
   </div>
 
-  <div class="home-main-feature ui middle aligned sixteen column centered padded equal grid">
+  <div class="home-main-feature ui three column doubling stackable grid container centered">
     <div class="row home-main-feature-breakdown">
-      <div class="home-main-feature-image seven wide column">
+      <div class="home-main-feature-image six wide column">
         <img src="<%= asset_path("feature-image.png") %>" alt="">
       </div>
 
@@ -51,8 +53,10 @@
           <li>We provide in depth analysis of your game and practice sessions so you know where to improve</li>
           <li>An affordable alternative to private coaching. Get up to 4 reviews in your first month</li>
         </ul>
-        <div class="home-main-feature-list-cta">
-          <a href="/trial-signup" class="ui green button fluid">Try us for free!</a>
+        <div class="row home-hero-cta">
+          <div class="home-hero-cta column">
+            <a href="/trial-signup" class="ui fluid green button">Try us for free!</a>
+          </div>
         </div>
       </div>
     </div>
