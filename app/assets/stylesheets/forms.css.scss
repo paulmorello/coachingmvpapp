@@ -1,0 +1,80 @@
+
+// New session page
+.login-wrapper.ui.five.column.stackable.grid.container.centered {
+
+  .login-header.row {
+
+    div.column {
+      h2 {
+        margin: .5em;
+        text-align: center;
+      }
+    }
+  }
+
+  .login-form.row {
+
+    div.column {
+      width: 35%;
+      form.ui.error {
+
+        button {
+          margin: 0 auto;
+          display: block;
+          width: 10em;
+        }
+        p {
+          margin-bottom: 4em;
+        }
+        .field {
+        }
+      }
+    }
+
+  }
+}
+
+// Trial sign up form
+.trial-signup-wrapper.ui.five.column.stackable.grid.container.centered {
+
+  .trial-signup-header.row {
+
+    div.column {
+      width: 25%;
+
+      h2 {
+        margin: .5em;
+        text-align: center;
+      }
+    }
+  }
+
+  .trial-signup-form.row {
+
+    div.column {
+      width: 35%;
+
+      form.ui.error {
+
+        .fields {
+          .field {
+            margin: 0 auto;
+          }
+        }
+
+        button {
+          margin: 0 auto;
+          display: block;
+          width: 10em;
+          margin-top: 2em;
+        }
+
+        input {
+          margin: .25em 0;
+        }
+
+      }
+    }
+
+  }
+}

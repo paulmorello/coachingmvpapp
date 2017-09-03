@@ -6,20 +6,25 @@
       <!-- Check if user has uploaded an avatar else show default -->
       <% if current_user.new_avatar.model["new_avatar"] == nil %>
         <img class="dashboard-image" src="<%= asset_path(@user.avatar) %>" alt="">
+        <h2 class="ui header"><%= @user.first_name %> <%= @user.last_name %>, <%= @user.team_name %></h2>
       <% else %>
         <img class="dashboard-image" src="<%= asset_path(@user.new_avatar) %>" alt="">
+        <h2 class="ui header"><%= @user.first_name %> <%= @user.last_name %>, <%= @user.team_name %></h2>
       <% end %>
 
     </div>
 
     <div class="dashboard-header-right">
-      <h2 class="ui header">Dashboard for <%= @user.first_name %> <%= @user.last_name %></h2>
+      <% if @averages.empty? %>
+      <div class="dashboard-get-started ui cards">
+        <%= render 'partials/cards/get_started' %>
+      </div>
+      <% end %>
     </div>
   </section>
 
   <section class="dashboard-top">
     <% if @averages.empty? %>
-      <h3>It's easy to get started. Upload game and practice footage to see your stats and get real feedback on your game.</h3>
     <% else %>
       <div>
         <h3 class="ui header">Your Season Averages</h3>
@@ -78,7 +83,7 @@
   </section>
 
   <section class="dashboard-middle">
-    <div>
+    <div class="dashboard-middle-header">
       <h3 class="ui header">Your Most Recent Reviewed Games</h3>
     </div>
     <table class="ui striped table">

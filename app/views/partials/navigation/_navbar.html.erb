@@ -1,4 +1,4 @@
-<header>
+<header class="loggedin-nav-wrapper">
   <nav>
     <div class="ui large menu">
       <div class="left menu">
@@ -54,7 +54,27 @@
           <a href="/login" class="item">Login</a>
         <% end %>
       </div>
+
+      <!-- Mobile only nav header -->
+      <div class="right-mobile menu">
+        <!-- Menu for logged in users -->
+        <% if logged_in? %>
+
+          <a class="item" href="/dashboard/<%= current_user.username %>"><i class="dashboard icon"></i></a>
+          <a class="item" href="/games/member/<%= current_user.username %>"><i class="trophy icon"></i></a>
+          <a class="item" href="/tendencies/<%= current_user.username %>"><i class="bar chart icon"></i></a>
+          <a class="item" href="/stats/member/<%= current_user.username %>"><i class="pie chart icon"></i></a>
+          <%= form_tag("/logout", method: "delete") do %>
+            <button class="ui basic button">Sign Out</button>
+          <% end %>
+
+        <% else %>
+          <a href="/trial-signup" class="item">Sign Up</a>
+          <a href="/login" class="item">Login</a>
+        <% end %>
+      </div>
     </div>
+  </div>
   </nav>
 </header>
 

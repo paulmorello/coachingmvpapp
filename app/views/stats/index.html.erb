@@ -1,7 +1,8 @@
-<div class="eight wide column">
+<div class="stats-main eight wide column centered">
   <% if @averages.empty? %>
-    <h3>Getting started is easy. Submit game footage for review and see you stats and averages here.</h3>
-    <a href="/games/new" type="button" class="ui button green">Upload Game Footage</a>
+    <div class="stats-get-started ui cards">
+      <%= render 'partials/cards/get_started' %>
+    </div>
   <% else %>
     <div class="stats-header">
       <h2>Your Stats</h2>

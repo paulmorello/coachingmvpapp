@@ -17,38 +17,99 @@ a.logo:hover {
   color: $primary-color;
 }
 
+header.loggedin-nav-wrapper {
+  .right-mobile.menu {
+    visibility: collapse;
+    width: 0;
+    height: 0;
+  }
+}
 // CSS for main dashboard page
 .dashboard-main {
   width: 100%;
 
+  // CSS header  section styling
   .dashboard-header {
-    width: 100%;
+    width: 95%;
     display: block;
+    padding: 2.5%;
+    margin-bottom: 1em;
 
     .dashboard-header-left {
       display: inline-block;
-      width: 40%;
+      width: 45%;
+      margin-left: 4em;
+      vertical-align: middle;
 
       img {
         border-radius: 100%;
         width: 60%;
-        margin: 10%;
         display: inline-block;
         vertical-align: middle;
-        text-align: center;
       }
     }
 
     .dashboard-header-right {
       display: inline-block;
-      width: 55%;
+      width: 45%;
+      vertical-align: middle;
 
-       h2 {
+      .dashboard-get-started.ui.cards {
         width: 100%;
         height: 100%;
         text-align: left;
-        vertical-align: middle;
+
+        .ui.bottom.attached.green.button {
+          a {
+            text-decoration: none;
+            color: white;
+          }
+        }
       }
     }
+  }
+
+  // CSS body section styling
+  .dashboard-top {
+
+  }
+
+  .dashboard-middle {
+    margin-bottom: 3em;
+  }
+}
+
+// Styling for stats dashboard page
+.stats-main {
+  width: 100%;
+
+  .stats-get-started {
+    width: 100%;
+    margin: 2em auto;
+    margin-left: 10em;
+
+    div.card {
+      width: 40em;
+    }
+
+    a {
+      color: white;
+    }
+  }
+}
+
+// Styling for dashboard game review page
+.games-main {
+
+  .games-header {
+    margin-top: 1em;
+  }
+}
+
+// Styling for dashboard practice review page
+.practice-main {
+
+  .practice-header {
+    margin-top: 1em;
   }
 }
