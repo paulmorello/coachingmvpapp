@@ -1,69 +1,64 @@
-<div class="ui grid">
-  <div class="eleven wide column">
 
-    <!-- Edit account details info block -->
-    <div>
-      <h2 class="ui header">Edit Account Details</h2>
+<div class="user-profile-edit-main">
 
-      <%= form_tag user_path, class: 'ui form success errors', method: 'patch', enctype: "multipart/form-data" do %>
+  <!-- Edit account details info block -->
+  <section class="user-profile-edit-header">
+    <h2>Edit Account Details</h2>
+  </section>
 
-        <!-- display form errors -->
-        <% if @user.errors.any? %>
-          <div class="ui error message">
-            <div class="header">Form Errors</div>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-          </div>
-        <% end %>
+  <section class="user-profile-edit-form">
+    <%= form_tag user_path, class: 'ui form success errors', method: 'patch', enctype: "multipart/form-data" do %>
 
-        <div class="field">
-          <label for="">Upload an Image</label>
-          <input class="field" type="file" name="new_avatar" placeholder="Upload an Image">
+      <!-- display form errors -->
+      <% if @user.errors.any? %>
+        <div class="ui error message">
+          <div class="header">Form Errors</div>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
         </div>
-
-        <div class="field">
-          <label for="">First Name</label>
-          <input class="field" type="text" name="first_name" placeholder="First Name" value="<%= @user.first_name %>">
-        </div>
-
-        <div class="field">
-          <label for="">Last Name</label>
-          <input class="field" type="text" name="last_name" placeholder="Last Name" value="<%= @user.last_name %>">
-        </div>
-
-        <div class="field">
-          <label for="">Username</label>
-          <input class="field" type="text" name="username_new" placeholder="Username" value="<%= @user.username %>">
-        </div>
-
-        <div class="field">
-          <label for="">Email</label>
-          <input class="field" type="email" name="email" placeholder="Email" value="<%= @user.email %>">
-        </div>
-
-        <div class="field">
-          <label for="">Password</label>
-          <input class="field" type="password" name="password" placeholder="New password? Type it here" value="">
-        </div>
-        <button class="ui button green">Save Changes</button>
-
       <% end %>
-    </div>
 
-  </div>
+      <div class="field">
+        <label for="">Upload an Avatar</label>
+        <input class="field" type="file" name="new_avatar" placeholder="Upload an Image">
+      </div>
 
-  <div class="four wide column">
-    <div class="ui vertical pointing menu">
-      <a class="item" href="/users/<%= current_user.username %>">Profile Info</a>
-    </div>
-  </div>
+      <div class="field">
+        <label for="">First Name</label>
+        <input class="field" type="text" name="first_name" placeholder="First Name" value="<%= @user.first_name %>">
+      </div>
+
+      <div class="field">
+        <label for="">Last Name</label>
+        <input class="field" type="text" name="last_name" placeholder="Last Name" value="<%= @user.last_name %>">
+      </div>
+
+      <div class="field">
+        <label for="">Username</label>
+        <input class="field" type="text" name="username_new" placeholder="Username" value="<%= @user.username %>">
+      </div>
+
+      <div class="field">
+        <label for="">Email</label>
+        <input class="field" type="email" name="email" placeholder="Email" value="<%= @user.email %>">
+      </div>
+
+      <div class="field">
+        <label for="">Password</label>
+        <input class="field" type="password" name="password" placeholder="New password? Type it here" value="">
+      </div>
+      <button class="ui button green">Save Changes</button>
+
+    <% end %>
+  </section>
+
+  <!-- General Information block here with info about account -->
+  <section class="user-profile-edit-content">
+    <p>If you would like to <a href="/users/<%= current_user.username %>/cancel-account" class="green">CANCEL YOUR ACCOUNT</a>, you can do that by clicking the link. Please don't forget to leave feedback about your experience with us. You can do this by clicking the link <span class="feedback">LEAVE FEEDBACK</span>.</p>
+  </section>
+
+  <!-- Popup feedback modal -->
+  <%= render 'partials/modals/feedback_modal' %>
 
 </div>
-<!-- General Information block here with info about account -->
-<div>
-  <p>You can <a href="/users/<%= current_user.username %>/update-payment">UPDATE YOUR PAYMENT INFORMATION</a> here or you may <a href="/users/<%= current_user.username %>/cancel-account">CANCEL YOUR ACCOUNT</a>. For more information about your account you can <span class="feedback">LEAVE FEEDBACK</span>.</p>
-</div>
-
-<!-- Popup feedback modal -->
-<%= render 'partials/modals/feedback_modal' %>

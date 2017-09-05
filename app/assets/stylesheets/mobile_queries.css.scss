@@ -1,5 +1,82 @@
 @media (max-width: 500px ) and (min-width: 200px) {
 
+  // Main user profile page
+  .user-profile-show-main {
+    width: 100%;
+
+    .user-profile-show-info {
+      width: 100%;
+      margin: 0%;
+
+      .user-profile-show-fields {
+
+        .user-profile-field {
+        }
+      }
+    }
+  }
+
+  // User profile Edit page
+  .user-profile-edit-main {
+    width: 100%;
+    .user-profile-edit-header {
+    }
+
+    .user-profile-edit-form {
+      width: 95%;
+      margin: 0;
+
+      form.ui.success.errors.form {
+        .field {
+          input {
+          }
+        }
+      }
+    }
+  }
+
+  // practice upload form mobile
+  .practice-upload-form {
+    .practice-upload-form-header {
+    }
+
+    .practice-upload-form-new {
+      width: 95%;
+      margin: 0 auto;
+
+      form.ui.error.form {
+        .field.date-game {
+          margin: 2em 0;
+
+          input {
+            width: 15em;
+          }
+        }
+      }
+    }
+  }
+
+  // Game upload form mobile
+  .game-upload-form {
+    .game-upload-form-header {
+    }
+
+    .game-upload-form-new {
+      width: 95%;
+      margin: 0 auto;
+
+      form.ui.error.form {
+        .field.date-game {
+          margin: 2em 0;
+
+          input {
+            width: 15em;
+          }
+        }
+      }
+    }
+  }
+
   // Navigation Mobile styling
   .vertical-menu {
     visibility: collapse;

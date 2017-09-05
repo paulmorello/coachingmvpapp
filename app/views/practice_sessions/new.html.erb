@@ -1,38 +1,41 @@
-<div>
+<div class="practice-upload-form">
 
-  <h2>Practice Session Upload Form</h2>
+  <section class="practice-upload-form-header">
+    <h2>Practice Session Upload Form</h2>
+  </section>
 
-  <%= form_tag '/practice_sessions', class: 'ui form error', method: 'post' do%>
+  <section class="practice-upload-form-new">
+    <%= form_tag '/practice_sessions', class: 'ui form error', method: 'post' do%>
 
-    <!-- display form errors -->
-    <% if @practice.errors.any? %>
-      <div class="ui error message">
-        <div class="header">Form Errors</div>
-          <% @practice.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
+      <!-- display form errors -->
+      <% if @practice.errors.any? %>
+        <div class="ui error message">
+          <div class="header">Form Errors</div>
+            <% @practice.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <label>Title</label>
+        <input type="text" name="practice_title" placeholder="Enter a video title">
       </div>
+
+      <div class="field date-game">
+        <label>Date of Session</label>
+        <input type="date" name="practice_date" placeholder="Enter the game date">
+      </div>
+
+      <div class="field">
+        <label>Youtube Video Upload</label>
+        <input type="text" name="video_url" placeholder="Enter youtube video link">
+      </div>
+
+      <button class="ui button green" type="submit">Submit</button>
+
     <% end %>
-
-    <div class="field">
-      <label>Title</label>
-      <input type="text" name="practice_title" placeholder="Enter a video title">
-    </div>
-
-    <div class="field">
-      <label>Date of Session</label>
-      <input type="date" name="practice_date" placeholder="Enter the game date">
-    </div>
-
-    <div class="field">
-      <label>Youtube Video Upload</label>
-      <input type="text" name="video_url" placeholder="Enter youtube video link">
-    </div>
-
-    <button class="ui button green" type="submit">Submit</button>
-
-  <% end %>
-
+  </section>
 </div>
 
 <!--

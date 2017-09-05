@@ -1,9 +1,12 @@
-<%= form_tag password_resets_path, class: 'ui form error', :method => :post do %>
-  <div class="fields">
-    <div class="field">
-      <%= label_tag :email %>
-      <%= text_field_tag :email, params[:email] %>
+
+<div class="password-reset-main">
+  <%= form_tag password_resets_path, class: 'ui form error', :method => :post do %>
+    <div class="fields">
+      <div class="field">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email], placeholder: "Enter email address" %>
+      </div>
+      <button type="submit" class="actions ui button green">Reset Password</button>
     </div>
-    <button type="submit" class="actions ui button green">Reset Password</button>
-  </div>
-<% end %>
+  <% end %>
+</div>

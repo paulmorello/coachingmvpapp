@@ -1,44 +1,36 @@
 
-<div class="ui grid">
+<div class="user-profile-show-main">
 
-  <div class="eleven wide column">
-
-    <!-- User details info block -->
-    <div>
-      <h2 class="ui header">User Details</h2>
-      <div>
+  <!-- User details info block -->
+  <section class="user-profile-show-info">
+    <h2>User Details</h2>
+    <div class="user-profile-show-fields">
+      <div class="user-profile-field">
         <h3>Full Name</h3><p><%= current_user.first_name %> <%= current_user.last_name %></p>
       </div>
-      <div>
+      <div class="user-profile-field">
         <h3>Username</h3><p><%= current_user.username %></p>
       </div>
-      <div>
+      <div class="user-profile-field">
         <h3>Email</h3><p><%= current_user.email %></p>
       </div>
-
-      <div>
-        <h3>Video Reviews remaining</h3>
-        <progress value="<%= current_user.video_reviews %>" max="2"></progress>
-        <p>You currently have <%= current_user.video_reviews %> remaining review for this month</p>
-      </div>
     </div>
 
-    <div>
-      <a class="ui button green" href="/users/<%= current_user.username %>/edit">Edit Info</a>
+    <div class="user-profile-show-video">
+      <h3>Video Reviews Remaining</h3>
+      <progress value="<%= current_user.video_reviews %>" max="2" class=""></progress>
+      <p>You currently have <%= current_user.video_reviews %> remaining review for this month. Your account is due to reset on <%= current_user.next_billing_date %>.</p>
     </div>
-  </div>
 
-  <div class="four wide column">
-    <div class="ui vertical pointing menu">
-      <a class="item" href="/users/<%= current_user.username %>">Profile Info</a>
-    </div>
-  </div>
+    <a class="ui button green" href="/users/<%= current_user.username %>/edit">Edit Info</a>
+  </section>
+
+  <!-- General Information block here with info about account -->
+  <section class="user-profile-show-content">
+    <p>If you would like to <a href="/users/<%= current_user.username %>/cancel-account" class="green">CANCEL YOUR ACCOUNT</a>, you can do that by clicking the link. Please don't forget to leave feedback about your experience with us. You can do this by clicking the link <span class="feedback">LEAVE FEEDBACK</span>.</p>
+  </section>
+
+  <!-- Popup feedback modal -->
+  <%= render 'partials/modals/feedback_modal' %>
 
 </div>
-<!-- General Information block here with info about account -->
-<div>
-  <p>You can <a href="/users/<%= current_user.username %>/update-payment">UPDATE YOUR PAYMENT INFORMATION</a> here or you may <a href="/users/<%= current_user.username %>/cancel-account">CANCEL YOUR ACCOUNT</a>. For more information about your account you can <span class="feedback">LEAVE FEEDBACK</span>.</p>
-</div>
-
-<!-- Popup feedback modal -->
-<%= render 'partials/modals/feedback_modal' %>

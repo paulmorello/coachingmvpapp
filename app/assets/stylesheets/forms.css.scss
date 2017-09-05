@@ -1,4 +1,60 @@
 
+// Practice upload form
+.practice-upload-form {
+
+  .practice-upload-form-header {
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  .practice-upload-form-new {
+    width: 35%;
+    margin: 0 auto;
+
+    form.ui.error.form {
+      .field {
+        margin: 2em 0;
+      }
+
+      .field.date-game {
+        margin: 2em 0;
+
+        input {
+          width: 15em;
+        }
+      }
+    }
+  }
+}
+
+// Game upload form
+.game-upload-form {
+
+  .game-upload-form-header {
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  .game-upload-form-new {
+    width: 35%;
+    margin: 0 auto;
+
+    form.ui.error.form {
+      .field {
+        margin: 2em 0;
+      }
+
+      .field.date-game {
+        margin: 2em 0;
+
+        input {
+          width: 15em;
+        }
+      }
+    }
+  }
+}
+
 // New session page
 .login-wrapper.ui.five.column.stackable.grid.container.centered {
 

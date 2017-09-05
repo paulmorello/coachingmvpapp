@@ -69,9 +69,11 @@ header.loggedin-nav-wrapper {
     }
   }
 
-  // CSS body section styling
   .dashboard-top {
 
+    table.ui.striped.table {
+      margin-bottom: 3em;
+    }
   }
 
   .dashboard-middle {
@@ -95,6 +97,52 @@ header.loggedin-nav-wrapper {
     a {
       color: white;
     }
+  }
+
+  .stats-header {
+    width: 100%;
+    text-align: center;
+    margin: 1.5em 0;
+  }
+
+  .stats-areachart {
+    width: 100%;
+    .stats-areachart-top {
+      margin-bottom: 1.5em;
+    }
+
+    .stats-areachart-bottom {
+      width: 50%;
+      margin: 0 auto;
+
+      .fields {
+        width: 100%;
+
+        .field {
+          width: 100%;
+          margin: 1.5em 0;
+
+          select {
+            width: 50%;
+            display: inline-block;
+            margin-left: 2em;
+          }
+
+          .ui.blue.button {
+            display: inline-block;
+            margin: 0 1.5em;
+          }
+        }
+      }
+    }
+  }
+
+  .stats-top {
+    margin: 1.5em 0;
+  }
+
+  .stats-middle {
+    margin: 1.5em 0;
   }
 }
 

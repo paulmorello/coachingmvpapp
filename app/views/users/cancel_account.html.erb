@@ -1,14 +1,13 @@
 
 
-<div class="ui grid">
+<div class="cancel-account">
 
-  <div class="eleven wide column">
+  <div class="cancel-account-main">
 
     <!-- User details info block -->
-    <div>
-      <h2 class="ui header">We'd hate to see you go!</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt sint fugiat placeat eaque, facere tempore blanditiis, ut quidem veniam officiis voluptates adipisci aliquid nemo impedit! Esse provident distinctio recusandae corporis.</p>
-    </div>
+    <h2 class="ui header">We'd hate to see you go!</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt sint fugiat placeat eaque, facere tempore blanditiis, ut quidem veniam officiis voluptates adipisci aliquid nemo impedit! Esse provident distinctio recusandae corporis.</p>
+
 
     <button id="delete-btn" class="ui button red">Delete</button>
 
@@ -16,12 +15,5 @@
     <%= render 'partials/modals/delete_account_modal' %>
 
   </div>
-
-  <div class="four wide column">
-    <div class="ui vertical pointing menu">
-      <a class="item" href="/users/<%= current_user.username %>">Profile Info</a>
-    </div>
-  </div>
-
 
 </div>

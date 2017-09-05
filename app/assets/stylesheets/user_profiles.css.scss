@@ -1,0 +1,113 @@
+@import "fonts";
+@import "variables";
+
+// Main user profile page
+.user-profile-show-main {
+  width: 100%;
+
+  .user-profile-show-info {
+    width: 50%;
+    background-color: white;
+    box-shadow: .01em .01em .01em;
+    margin: 1em;
+    border-radius: 5px;
+
+    h2 {
+      margin: .5em;
+      padding-top: 1em;
+    }
+
+    .user-profile-show-fields {
+      margin: 1em;
+
+      .user-profile-field {
+        width: 100%;
+        font-size: 1.25em;
+        border-bottom: 1px solid lightgrey;
+
+        h3 {
+          width: 30%;
+          display: inline-block;
+          text-align: left;
+        }
+        p {
+          width: 60%;
+          display: inline-block;
+          margin: .5em 0em .5em 0em;
+          text-align: right;
+        }
+      }
+    }
+
+    .user-profile-show-video {
+      margin: 1em;
+    }
+
+    a {
+      margin: 1em;
+    }
+  }
+
+  .user-profile-show-content {
+    width: 50%;
+    margin: 1em;
+  }
+
+  a {
+    text-decoration: none;
+    color: $primary-color;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: $primary-color;
+  }
+
+  span {
+    color: $primary-color;
+    cursor: pointer;
+  }
+}
+
+// User profile Edit page
+.user-profile-edit-main {
+
+  .user-profile-edit-header {
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  .user-profile-edit-form {
+    width: 35%;
+    margin: 0 auto;
+
+    form.ui.form.success.errors {
+      .field {
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .user-profile-edit-content {
+    width: 50%;
+    margin: 2em auto;
+  }
+
+  a {
+    text-decoration: none;
+    color: $primary-color;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: $primary-color;
+  }
+
+  span {
+    color: $primary-color;
+    cursor: pointer;
+  }
+}

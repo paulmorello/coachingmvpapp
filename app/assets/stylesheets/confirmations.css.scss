@@ -24,5 +24,80 @@
       width: 15em;
     }
   }
+}
 
+// Game confirmation page
+.game-confirmation {
+  width: 100%;
+  text-align: center;
+
+  .game-confirmation-upload {
+    width: 60%;
+    margin: 2em auto;
+  }
+
+  .game-confirmation-next {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 5em;
+  }
+}
+
+// Practice confirmation page
+.practice-confirmation {
+  width: 100%;
+  text-align: center;
+
+  .practice-confirmation-upload {
+    width: 60%;
+    margin: 2em auto;
+  }
+
+  .practice-confirmation-next {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 5em;
+  }
+}
+
+// Payment confirmation page
+.payment-confirmation-wrapper {
+  width: 100%;
+  text-align: center;
+
+  .payment-confirmation-details {
+    width: 60%;
+    margin: 2em auto;
+  }
+
+  .payment-confirmation-order {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 5em;
+  }
+
+  a {
+    display: block;
+    margin: 0 auto;
+    margin-top: 5em;
+    width: 15em;
+  }
+}
+
+// Delete Account confirmation page
+.delete-confirmation-wrapper {
+  width: 100%;
+  text-align: center;
+
+  .payment-confirmation-details {
+    width: 60%;
+    margin: 2em auto;
+  }
+
+  a {
+    display: block;
+    margin: 0 auto;
+    margin-top: 5em;
+    width: 15em;
+  }
 }

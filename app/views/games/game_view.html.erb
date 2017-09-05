@@ -5,7 +5,7 @@
     <h4>Game Date: <%= @game.date %></h4>
   </section>
 
-  <section>
+  <section class="game-view-stats-table">
     <div>
       <h3 class="ui header">Game Stats</h3>
     </div>
@@ -65,8 +65,8 @@
     </table>
   </section>
 
-  <section>
-    <div>
+  <section class="game-view-notes">
+    <div class="game-view-notes-header">
       <h3 class="ui header">Game Notes</h3>
     </div>
 
@@ -75,13 +75,11 @@
     </div>
   </section>
 
-  <section>
+  <section class="game-view-player-tendencies">
     <div>
-      <h3 class="ui header">Player Tendencies during <%= @game.title %></h3>
+      <h3 class="ui header">Areas for Development</h3>
     </div>
-  </section>
 
-  <section>
     <div>
       <p><%= @stats["player_tendencies"] %></p>
     </div>

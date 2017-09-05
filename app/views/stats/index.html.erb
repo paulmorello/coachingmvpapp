@@ -1,11 +1,11 @@
-<div class="stats-main eight wide column centered">
+<div class="stats-main twelve wide column">
   <% if @averages.empty? %>
-    <div class="stats-get-started ui cards">
+    <div class="stats-get-started ui cards centered">
       <%= render 'partials/cards/get_started' %>
     </div>
   <% else %>
     <div class="stats-header">
-      <h2>Your Stats</h2>
+      <h2><%= current_user.first_name %> <%= current_user.last_name %>  ALL TIME Stats</h2>
       <!-- Selecting the correct stat to show -->
       <%= render 'partials/forms/stat_sort_header' %>
     </div>

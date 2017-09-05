@@ -1,0 +1,48 @@
+
+// cancel account page
+.cancel-account {
+  width: 100%;
+
+  .cancel-account-main {
+    width: 60%;
+    margin: 2em auto;
+    text-align: center;
+
+    h2 {
+      font-size: 2em;
+    }
+
+    p {
+      margin-bottom: 2em;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      margin-top: 5em;
+      width: 15em;
+    }
+  }
+}
+
+// delete account form
+.delete-account-main {
+  width: 100%;
+
+  .delete-account-form {
+    width: 100%;
+
+    form {
+      width: 60%;
+      display: inline-block;
+
+      button {
+        display: inline-block;
+      }
+    }
+    .ui.cancel.inverted.button.green {
+      width: 20%;
+      display: inline-block;
+    }
+  }
+}

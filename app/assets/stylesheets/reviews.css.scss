@@ -1,0 +1,49 @@
+
+// Game review pages
+.game-view-main {
+  width: 100%;
+
+  .game-header {
+    width: 60%;
+    margin: 1em 0 3em 1em;
+  }
+
+  .game-view-stats-table {
+    width: 80%;
+    margin: 1em 0 3em 1em;
+  }
+
+  .game-view-notes {
+    width: 60%;
+    margin: 1em 0 3em 1em;
+
+    .game-view-notes-header {
+      margin-bottom: 1em;
+    }
+  }
+
+  .game-view-player-tendencies {
+    width: 60%;
+    margin: 1em 0 3em 1em;
+  }
+}
+
+// Practice review pages
+.practice-view-main {
+  width: 100%;
+
+  .practice-header {
+    width: 60%;
+    margin: 1em 0 3em 1em;
+  }
+
+  .practice-view-strengths {
+    width: 80%;
+    margin: 1em 0 3em 1em;
+  }
+
+  .practice-view-notes {
+    width: 60%;
+    margin: 1em 0 3em 1em;
+  }
+}
