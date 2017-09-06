@@ -1,10 +1,12 @@
+@import "fonts";
+@import "variables";
 
 // cancel account page
 .cancel-account {
   width: 100%;
 
   .cancel-account-main {
-    width: 60%;
+    width: 40%;
     margin: 2em auto;
     text-align: center;
 
@@ -14,6 +16,12 @@
 
     p {
       margin-bottom: 2em;
+
+      span {
+        text-decoration: none;
+        color: $primary-color;
+        cursor: pointer;
+      }
     }
 
     button {
