@@ -28,6 +28,12 @@ $(document).ready(function() {
     var deleteBtn = document.getElementById('delete-btn');
     deleteBtn.addEventListener('click', function(event) {
       $('.basic.modal').modal('show');
+
+      // Track delete account click
+      woopra.track ('Delete Account Popup Opened',{
+        url: document.location.pathname,
+        title: document.title
+      })
     });
 
   };

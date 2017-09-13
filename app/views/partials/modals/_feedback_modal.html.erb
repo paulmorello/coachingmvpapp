@@ -33,6 +33,12 @@ $(document).ready(function() {
 
         $('.tiny.modal').modal('show');
 
+        // Track feedback opening event
+        woopra.track ('Leave Feedback Opened',{
+          url: document.location.pathname,
+          title: document.title
+        })
+
       });
       clearInterval(modalInterval);
     };
