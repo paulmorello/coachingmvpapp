@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProScout</title>
+    <title><%= @title %></title>
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <!-- Jquery CDN for Semantic UI -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="<%= asset_path("favicon.png") %>">
-
-    <!-- Semantic UI css CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
 
     <!-- Start of Woopra Code -->
     <script>
@@ -32,6 +21,17 @@
       woopra.track();
     </script>
     <!-- End of Woopra Code -->
+    
+    <!-- Jquery CDN for Semantic UI -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<%= asset_path("favicon.png") %>">
+
+    <!-- Semantic UI css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
 
   </head>
 

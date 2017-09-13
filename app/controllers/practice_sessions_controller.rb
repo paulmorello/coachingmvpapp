@@ -1,6 +1,7 @@
 class PracticeSessionsController < ApplicationController
 
   def tendencies
+    @title = "ProScout - Practice Session Dashboard"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 
@@ -14,6 +15,7 @@ class PracticeSessionsController < ApplicationController
   end
 
   def practice_view
+    @title = "ProScout - Practice Overview"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 
@@ -26,17 +28,20 @@ class PracticeSessionsController < ApplicationController
   end
 
   def confirmation
+    @title = "ProScout - Practice Session Upload Confirmation"
     redirect_to_route_if_not_logged_in(route = 'login')
 
   end
 
   def index
+    @title = "ProScout - Practice session Dashboard"
     redirect_to_route_if_not_logged_in(route = 'login')
     redirect_to '/tendencies'
 
   end
 
   def new
+    @title = "ProScout - New Practice Session Upload"
     redirect_to_route_if_not_logged_in(route = 'login')
 
     # creating instance of practice session for errors
@@ -82,6 +87,7 @@ class PracticeSessionsController < ApplicationController
   end
 
   def show
+    @title = "ProScout - Practice Admin Review"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")
@@ -96,6 +102,7 @@ class PracticeSessionsController < ApplicationController
   end
 
   def admin_review
+    @title = "ProScout - Practice Final Admin Review"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")
@@ -107,7 +114,7 @@ class PracticeSessionsController < ApplicationController
   end
 
   def complete_review
-
+    @title = "ProScout - Practice Complete Review"
     # Updating user and Practice session properties
     @practice = PracticeSession.find_by(id: params[:practice_id])
     @user = User.find_by(id: params[:user_id])
@@ -131,6 +138,7 @@ class PracticeSessionsController < ApplicationController
   end
 
   def confirm_complete_review
+    @title = "ProScout - Practice Admin Review Completed"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")

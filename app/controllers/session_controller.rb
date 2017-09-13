@@ -2,7 +2,7 @@ class SessionController < ApplicationController
 
 
   def new
-
+    @title = "ProScout - Log In"
   end
 
   def create

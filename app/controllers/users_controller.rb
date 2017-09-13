@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
   def home
-
+    @title = "ProScout - Your Personal Scouting Profile"
   end
 
   def dashboard
+    @title = "ProScout - Dashboard"
     redirect_to_route_if_not_logged_in(route = 'login')
 
     # check if user is logged in again
@@ -72,6 +73,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @title = "ProScout - Sign Up"
     if logged_in?
       redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
     end
@@ -81,6 +83,7 @@ class UsersController < ApplicationController
   end
 
   def trial_signup
+    @title = "ProScout - Trial Sign Up Form"
     if logged_in?
       redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
     end
@@ -129,6 +132,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @title = "ProScout - User Profile"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 
@@ -139,6 +143,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @title = "ProScout - Edit User Profile"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 
@@ -170,6 +175,7 @@ class UsersController < ApplicationController
   end
 
   def update_payment
+    @title = "ProScout - Update Payment"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 
@@ -180,12 +186,15 @@ class UsersController < ApplicationController
   end
 
   def confirm_payment
+    @title = "ProScout - Payment Confirmed"
   end
 
   def confirm_trial
+    @title = "ProScout - Trial Confirmed"
   end
 
   def cancel_account
+    @title = "ProScout - Cancel Account"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 
@@ -196,6 +205,7 @@ class UsersController < ApplicationController
   end
 
   def delete_account
+    @title = "ProScout - Delete Account"
     @user = current_user
 
     if @user != nil
@@ -220,6 +230,7 @@ class UsersController < ApplicationController
 
   # Admin pages for game and page reviews
   def admin
+    @title = "ProScout - Admin Dashboard"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")
@@ -262,6 +273,7 @@ class UsersController < ApplicationController
   end
 
   def game_reviews
+    @title = "ProScout - All Game Reviews"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")
@@ -272,7 +284,7 @@ class UsersController < ApplicationController
   end
 
   def practice_reviews
-
+    @title = "ProScout - All Practice Reviews"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")

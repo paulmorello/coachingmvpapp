@@ -1,6 +1,7 @@
 class PasswordResetsController < ApplicationController
 
   def new
+    @title = "ProScout - Password Reset"
     if logged_in?
       redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
     end
@@ -14,6 +15,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
+    @title = "ProScout - New Password"
     if !logged_in?
       redirect_to_route_if_not_logged_in(route = 'login')
     else
@@ -24,7 +26,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-
+    @title = "ProScout - Update Password"
     @user = User.find_by_password_reset_token!(params[:id])
     if @user.password_reset_sent_at < 2.hours.ago
 

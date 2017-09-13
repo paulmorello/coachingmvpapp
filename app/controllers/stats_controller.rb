@@ -1,6 +1,7 @@
 class StatsController < ApplicationController
 
   def index
+    @title = "ProScout - Stats Dashboard"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 

@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
 
   def index
+    @title = "ProScout - Games Dashboard"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 
@@ -13,6 +14,7 @@ class GamesController < ApplicationController
   end
 
   def game_view
+    @title = "ProScout - Game Overview"
     redirect_to_route_if_not_logged_in(route = 'login')
     @user = current_user
 
@@ -26,11 +28,13 @@ class GamesController < ApplicationController
   end
 
   def confirmation
+    @title = "ProScout - Game Confirmation"
     redirect_to_route_if_not_logged_in(route = 'login')
 
   end
 
   def show
+    @title = "ProScout - Admin Game Review"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "/dashboard/#{current_user.username}")
@@ -49,6 +53,7 @@ class GamesController < ApplicationController
   end
 
   def admin_review
+    @title = "ProScout - Finalize Game Review"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "/dashboard/#{current_user.username}")
@@ -65,6 +70,7 @@ class GamesController < ApplicationController
   end
 
   def new
+    @title = "ProScout - Upload New Game Footage"
     redirect_to_route_if_not_logged_in(route = 'login')
 
     @game = Game.new
@@ -115,6 +121,7 @@ class GamesController < ApplicationController
   end
 
   def confirm_complete_review
+    @title = "ProScout - Game Confirmation Page"
     redirect_to_route_if_not_logged_in(route = 'login')
     if logged_in?
       is_not_admin?(route = "dashboard/#{current_user.username}")
