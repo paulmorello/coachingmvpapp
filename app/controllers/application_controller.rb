@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   include SessionHelper
   include RouteHelper
+  include WoopraHelper
 
   def auth_current_user
     @auth_current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
