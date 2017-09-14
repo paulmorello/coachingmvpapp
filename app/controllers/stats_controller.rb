@@ -23,6 +23,14 @@ class StatsController < ApplicationController
       if params[:sort_by]
         @sort_by = params[:sort_by]
         @chart_query = @first_query.group(:date).average(@sort_by)
+
+        # Track chart sort by stat
+        woopra = WoopraTracker.new(request)
+        woopra_configure
+
+        woopra.track("stats_chart_changed", {
+          stat: @sort_by
+        }, true)
       end
 
       @averages = {}

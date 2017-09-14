@@ -24,6 +24,15 @@ class GamesController < ApplicationController
       @game = Game.find_by(id: params[:id])
       @stats = Stat.find_by(game_id: @game.id)
 
+      # Track User viewing game notes
+      woopra = WoopraTracker.new(request)
+      woopra_configure
+
+      woopra.track("game_review", {
+        game_title: @game.title,
+        game_date: @game.date,
+        team_name: @user.team_name
+      }, true)
     end
   end
 
@@ -111,6 +120,21 @@ class GamesController < ApplicationController
 
     if @game.save
       if @user.save
+
+        # Tracking new game footage uploaded
+        woopra = WoopraTracker.new(request)
+        woopra_configure
+
+        woopra.track("game_footage_uploaded", {
+          username: @user.username,
+          team_name: @user.team_name,
+          subscription: @user.subscription,
+          title: @game.title,
+          game_date: @game.date,
+          game_url: @game.game_url,
+          player_number: @game.player_number
+        }, true)
+
         redirect_to '/game/confirmation'
       end
     else

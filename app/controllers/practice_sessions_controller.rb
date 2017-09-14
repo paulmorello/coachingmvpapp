@@ -24,6 +24,16 @@ class PracticeSessionsController < ApplicationController
 
       @practice = PracticeSession.find_by(user_id: @user.id)
 
+      # Track User viewing practice notes
+      woopra = WoopraTracker.new(request)
+      woopra_configure
+
+      woopra.track("practice_review", {
+        practice_title: @practice.title,
+        practice_date: @practice.date,
+        player_focus: @practice.focus,
+        team_name: @user.team_name
+      }, true)
     end
   end
 
@@ -78,6 +88,20 @@ class PracticeSessionsController < ApplicationController
 
     if @practice.save
       if @user.save
+
+        # Tracking new practice session upload
+        woopra = WoopraTracker.new(request)
+        woopra_configure
+
+        woopra.track("practice_session_uploaded", {
+          username: @user.username,
+          team_name: @user.team_name,
+          subscription: @user.subscription,
+          title: @practice.title,
+          practice_date: @practice.date,
+          practice_url: @practice.practice_session_url
+        }, true)
+
         redirect_to '/practice/confirmation'
       end
     else

@@ -117,6 +117,30 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
 
+      # Tracking new signups
+      woopra = WoopraTracker.new(request)
+      woopra_configure
+
+      # Woopra identify visitor logging in
+      woopra.identify({
+        email: @user.email,
+        name: @user.first_name + ' ' + @user.last_name,
+        username: @user.username,
+        first_name: @user.first_name,
+        last_name: @user.last_name,
+        team_name: @user.team_name,
+        avatar: @user.avatar,
+        subscription: @user.subscription
+      })
+
+      # Track signup form
+      woopra.track("signup", {
+        username: @user.username,
+        email: @user.email,
+        team_name: @user.team_name,
+        subscription: @user.subscription
+      }, true)
+
       if params[:subscription] == 'trial'
         sleep 3
           redirect_to '/confirmation/trial-confirmed'
@@ -126,7 +150,7 @@ class UsersController < ApplicationController
       end
     else
 
-      render :new
+      render :trial_signup
     end
 
   end
@@ -168,6 +192,30 @@ class UsersController < ApplicationController
     end
 
     if @user.save
+
+      # Track users updating their account
+      woopra = WoopraTracker.new(request)
+      woopra_configure
+
+      # Woopra identify visitor updating account
+      woopra.identify({
+        email: @user.email,
+        name: @user.first_name + ' ' + @user.last_name,
+        username: @user.username,
+        first_name: @user.first_name,
+        last_name: @user.last_name,
+        avatar: @user.avatar
+      })
+
+      # Track update account details
+      woopra.track("update_account", {
+        username: @user.username,
+        email: @user.email,
+        first_name: @user.first_name,
+        last_name: @user.last_name,
+        team_name: @user.team_name
+      }, true)
+
       @success = "You have successfully updated your account."
       return redirect_to user_path
     end
@@ -219,6 +267,17 @@ class UsersController < ApplicationController
     user = current_user
 
     if user && user.username == params[:username]
+
+      # Track user deleting account
+      woopra = WoopraTracker.new(request)
+      woopra_configure
+
+      woopra.track("deleted_account", {
+        username: user.username,
+        team_name: user.team_name,
+        email: user.email
+      }, true)
+
       user.delete
       sleep 3
         redirect_to "/confirmation/delete-account"
