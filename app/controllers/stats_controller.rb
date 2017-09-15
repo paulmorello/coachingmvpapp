@@ -133,6 +133,15 @@ class StatsController < ApplicationController
         game.needs_review = false
 
         if game.save
+
+          # Tracking when admin review is completed
+          woopra = WoopraTracker.new(request)
+          woopra_configure
+
+          woopra.track("review_completed", {
+            review_type: "game"
+          }, true)
+
           redirect_to '/admin/complete-game-review/confirmed'
         end
 

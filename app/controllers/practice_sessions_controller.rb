@@ -154,6 +154,15 @@ class PracticeSessionsController < ApplicationController
     if @user.save
       @practice.needs_review = false
       if @practice.save
+
+        # Tracking when admin review is completed
+        woopra = WoopraTracker.new(request)
+        woopra_configure
+
+        woopra.track("review_completed", {
+          review_type: "practice"
+        }, true)
+
         redirect_to '/admin/complete-practice-review/confirmed'
       else
         redirect_to "/admin/practice/#{@practice.id}/show/admin-review"
