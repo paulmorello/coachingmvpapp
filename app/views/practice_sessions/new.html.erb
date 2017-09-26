@@ -32,7 +32,13 @@
         <input type="text" name="video_url" placeholder="Enter youtube video link">
       </div>
 
-      <button class="ui button green" type="submit">Submit</button>
+      <!-- Checking if demo and hiding review submission button -->
+      <% if current_user.subscription != 'demo' %>
+        <button class="ui button green" type="submit">Submit</button>
+      <% else %>
+        <p>Here you can submit your practice sessions for review by a real coach. Have your game analyzed and broken down, then stored in your own profile.</p>
+        <a href="/trial-signup" class="ui button green">Sign Up For Free</a>
+      <% end %>
 
     <% end %>
   </section>

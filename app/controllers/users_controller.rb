@@ -84,7 +84,7 @@ class UsersController < ApplicationController
 
   def trial_signup
     @title = "ProScout - Trial Sign Up Form"
-    if logged_in?
+    if logged_in? && current_user.subscription != 'demo'
       redirect_to_route_if_logged_in(route = "dashboard/#{current_user.username}")
     end
 

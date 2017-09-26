@@ -22,7 +22,12 @@
       <p>You currently have <%= current_user.video_reviews %> remaining review for this month. Your account is due to reset on <%= current_user.next_billing_date %>.</p>
     </div>
 
-    <a class="ui button green" href="/users/<%= current_user.username %>/edit">Edit Info</a>
+    <!-- Checking if demo and hiding review submission button -->
+    <% if current_user.subscription != 'demo' %>
+      <a class="ui button green" href="/users/<%= current_user.username %>/edit">Edit Info</a>
+    <% else %>
+      <a href="/trial-signup" class="ui button green">Sign Up For Free</a>
+    <% end %>
   </section>
 
   <!-- General Information block here with info about account -->

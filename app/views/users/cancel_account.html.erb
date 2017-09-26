@@ -14,8 +14,12 @@
       you would have liked to see or you just want to tell us what we did wrong, please let us know by <span class="feedback">LEAVING YOUR FEEDBACK</span>.
     </p>
 
-
-    <button id="delete-btn" class="ui button red">Delete</button>
+    <!-- Checking if demo and hiding review submission button -->
+    <% if current_user.subscription != 'demo' %>
+      <<button id="delete-btn" class="ui button red">Delete</button>
+    <% else %>
+      <a href="/trial-signup" class="ui button green">Sign Up For Free</a>
+    <% end %>
 
     <!-- Popup delete your account modal -->
     <%= render 'partials/modals/delete_account_modal' %>

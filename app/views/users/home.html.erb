@@ -37,6 +37,20 @@
     </div>
   </div>
 
+  <div class="home-demo-section">
+    <div class="row">
+      <h2>Why not try our Free Demo?</h2>
+      <div class="ui input">
+        <input id="demo-input" type="email" name="" value="" placeholder="Enter your email address">
+      </div>
+      <button id="demo-btn" class="ui inverted button">Try Demo</button>
+      <div class="home-demo-messages">
+        <div id="demo-error" class="ui pointing red basic label hidden">Please enter a valid email address.</div>
+        <div id="demo-success" class="ui pointing green basic label hidden">Success, you will receive an email shortly.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="home-main-feature ui three column doubling stackable grid container centered">
     <div class="row home-main-feature-breakdown">
       <div class="home-main-feature-image six wide column">
@@ -84,3 +98,56 @@
 
 <!-- Woopra Page View tracking -->
 <script>woopra.track();</script>
+<!-- Woopra Demo Sign Up event -->
+<script>
+
+let demoBtn = document.getElementById('demo-btn');
+let inputVal = document.getElementById('demo-input');
+let successMessage = document.getElementById('demo-success');
+let errorMessage = document.getElementById('demo-error');
+let isErrorHidden = true;
+let isSuccessHidden = true;
+
+demoBtn.addEventListener('click', function() {
+
+  if (inputVal.value.includes('.com')) {
+
+    // Woopra tracking demo sign up
+    woopra.identify({
+      email: inputVal.value
+    });
+
+    woopra.track('demo-sign-up', {
+      email: inputVal.value
+    })
+
+    if (isSuccessHidden) {
+      if(!isErrorHidden) {
+        errorMessage.classList += ' hidden';
+        isErrorHidden = true;
+      }
+      // show success message
+      successMessage.classList.remove('hidden');
+      isSuccessHidden = false;
+    } else {
+      successMessage.classList += ' hidden';
+      isSuccessHidden = true;
+    }
+
+  } else {
+    if (isErrorHidden) {
+      if(!isSuccessHidden) {
+        successMessage.classList += ' hidden';
+        isSuccessHidden = true;
+      }
+      // show error message
+      errorMessage.classList.remove('hidden');
+      isErrorHidden = false;
+    } else {
+      errorMessage.classList += ' hidden';
+      isErrorHidden = true;
+    }
+  }
+});
+
+</script>
