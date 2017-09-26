@@ -57,9 +57,15 @@
       <!-- Checking if demo and hiding review submission button -->
       <% if current_user.subscription != 'demo' %>
         <button class="ui button green" type="submit">Submit</button>
-      <% else %>
+      <% elsif current_user.subscription == 'demo' %>
         <p>Here you can submit your game footage for review by a real coach. Have your game broken down and have all your game stats recorded, then stored in your own profile.</p>
         <a href="/trial-signup" class="ui button green">Sign Up For Free</a>
+      <% elsif current_user.video_reviews == 0 %>
+        <p>You have currently used all your free monthly reviews. We really hope you've enjoyed the service!</p>
+        <br>
+        <p>If you have some feedback for us about your experience and what we can do better, send an email to paul@proscoutapp.com. Look forward to hearing from you.</p>
+      <% else %>
+        <button class="ui button green" type="submit">Submit</button>
       <% end %>
 
     <% end %>
