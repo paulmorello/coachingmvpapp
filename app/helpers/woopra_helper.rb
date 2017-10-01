@@ -5,7 +5,7 @@ module WoopraHelper
   def woopra_configure
     woopra = WoopraTracker.new(request)
     woopra.config({
-      domain: "dev.proscoutapp.com"
+      domain: "proscoutapp.com"
     })
   end
 
